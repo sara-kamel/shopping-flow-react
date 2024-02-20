@@ -1,19 +1,18 @@
-
-import { Card, Button } from 'react-bootstrap';
-import ProductsList from './ProductsList';
-import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Card, Button } from "react-bootstrap";
+import ProductsList from "./ProductsList";
+import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyWordSearch, setKeyWordSearch] = useState('');
-  const searchItem = searchParams.get('title');
+  const [keyWordSearch, setKeyWordSearch] = useState("");
+  const searchItem = searchParams.get("title");
   const onHandleClick = (title) => {
     if (title) {
       setSearchParams({ title });
     } else {
-      setSearchParams('');
+      setSearchParams("");
     }
   };
   const filterProducts = searchItem
@@ -31,7 +30,7 @@ export default function Products() {
       />
       <Button onClick={() => onHandleClick(keyWordSearch)}>Search</Button>
       {filterProducts.map((product) => (
-        <Card key={product.id} style={{ width: '18rem' }}>
+        <Card key={product.id} style={{ width: "18rem" }}>
           <Card.Img variant="top" src={product.images[0]} />
           <Card.Body>
             <Card.Title>

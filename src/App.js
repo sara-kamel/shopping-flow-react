@@ -8,6 +8,8 @@ import Home from "./Home";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
 import { countQuantity } from "./helper";
+import Checkout from './Checkout';
+import Payment from './Payment';
 
 export default function App() {
   const [cartCount, setCartCount] = useState(() => {
@@ -30,6 +32,8 @@ export default function App() {
             <span>{cartCount}</span>
             <Link to="/cart">Cart</Link>
           </div>
+          <Link to="/checkout">Checkout </Link>
+          <Link to="/Payment">Payment</Link>
         </Container>
       </Navbar>
 
@@ -54,7 +58,10 @@ export default function App() {
             />
           }
         />
+         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/Payment" element={<Payment/>} />
       </Routes>
+     
     </div>
   );
 }

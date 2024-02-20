@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import Button from 'react-bootstrap/Button';
-import { useParams, useNavigate } from 'react-router-dom';
-import ProductsList from './ProductsList';
+import { useState } from "react";
+import Carousel from "react-bootstrap/Carousel";
+import Button from "react-bootstrap/Button";
+import { useParams, useNavigate } from "react-router-dom";
+import ProductsList from "./ProductsList";
 import {
   findItem,
   addNewItemToCart,
   getItemsFromLocalStorge,
   countQuantity,
-  setItemInLocalStorge
-} from './helper';
+  setItemInLocalStorge,
+} from "./helper";
 
 export default function ProductDetails({ onAddToCart }) {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function ProductDetails({ onAddToCart }) {
       existItem.quantity += newCount;
       setCartList(newList);
       onAddToCart(countQuantity(newList));
-      setItemInLocalStorge("cartList", cartList)
+      setItemInLocalStorge("cartList", cartList);
     } else {
       addNewItemToCart(newList, product, newCount);
       onAddToCart(countQuantity(newList) + newCount);
@@ -52,17 +52,17 @@ export default function ProductDetails({ onAddToCart }) {
         </Carousel.Item>
       </Carousel>
       <br />
-      <div style={{ color: 'green' }}>
+      <div style={{ color: "green" }}>
         <h5>
-          {product.title}{' '}
-          <span style={{ border: '1px solid gray', padding: '4px' }}>
+          {product.title}{" "}
+          <span style={{ border: "1px solid gray", padding: "4px" }}>
             {product.price}$
           </span>
         </h5>
         <p>{product.description}</p>
       </div>
       <input
-        style={{ width: '80px' }}
+        style={{ width: "80px" }}
         type="number"
         value={quantity}
         onChange={(e) => {
@@ -72,7 +72,7 @@ export default function ProductDetails({ onAddToCart }) {
       <Button
         onClick={() => {
           onAddProductToCart(product, quantity);
-          navigate('/cart');
+          navigate("/cart");
         }}
       >
         Add To Cart
