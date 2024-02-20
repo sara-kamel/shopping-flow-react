@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, Form } from 'react-bootstrap';
@@ -35,7 +35,7 @@ export default function Cart({ onChangeItemsCount }) {
       <article>
         {cartList.map((product) => (
           <Card className="cart-product" key={product.id}>
-            <Card.Img className="cart-img" variant="top" src={product.image} />
+            <Card.Img variant="top" src={product.image} />
             <Card.Body>
               <Card.Title
                 title="show product"

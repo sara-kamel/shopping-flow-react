@@ -29,6 +29,7 @@ export default function Products() {
         onChange={(e) => setKeyWordSearch(e.target.value)}
       />
       <Button onClick={() => onHandleClick(keyWordSearch)}>Search</Button>
+      <div className="products-list">
       {filterProducts.map((product) => (
         <Card key={product.id} style={{ width: "18rem" }}>
           <Card.Img variant="top" src={product.images[0]} />
@@ -42,6 +43,7 @@ export default function Products() {
           </Card.Body>
         </Card>
       ))}
+      </div>
     </>
   );
 }

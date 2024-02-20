@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
@@ -38,6 +39,7 @@ export default function ProductDetails({ onAddToCart }) {
       <Carousel key={product.id}>
         <Carousel.Item>
           <img
+      
             className="d-block  w-100"
             src={product.images[0]}
             alt="First slide"
