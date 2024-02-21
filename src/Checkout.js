@@ -2,22 +2,24 @@
 import { Formik, Form, Field,ErrorMessage } from 'formik';
 import { TextField, Button, Box,InputLabel,Typography,  MenuItem, FormControl, Select} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+import {setItemInLocalStorge, userInformationValidation} from './helper'
+import * as Yup from 'yup'; 
  
-const DisplayingErrorMessagesSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-    streetAdress: Yup.string().required('Required'),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    zipCode: Yup.string()
-    .matches(/^[0-9]{5}(-[0-9]{4})?$/, 'Please enter a valid ZIP code')
-.required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-});
+const DisplayingErrorMessagesSchema = userInformationValidation(Yup)
+//  Yup.object().shape({
+//   name: Yup.string()
+//     .min(2, 'Too Short!')
+//     .max(50, 'Too Long!')
+//     .required('Required'),
+//     streetAdress: Yup.string().required('Required'),
+//     city: Yup.string().required('Required'),
+//     state: Yup.string().required('Required'),
+//     country: Yup.string().required('Required'),
+//     zipCode: Yup.string()
+//     .matches(/^[0-9]{5}(-[0-9]{4})?$/, 'Please enter a valid ZIP code')
+// .required('Required'),
+//   email: Yup.string().email('Invalid email').required('Required'),
+// });
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -36,6 +38,7 @@ export default function Checkout() {
     onSubmit={(values, { setSubmitting }) => {
       console.log(values)
       setTimeout(() => {
+        setItemInLocalStorge('values', values);
         navigate('/Payment');
         setSubmitting(false);
       }, 300);
@@ -67,18 +70,26 @@ export default function Checkout() {
       <Field name="zipCode" required  as={TextField} label="Zip Code" helperText={<FormikError name="zipCode" />} 
           error={Boolean(touched.zipCode && errors.zipCode)}/>
     </Box>
-    <Box margin={1}>
-      <Field name="state" required  as={TextField} label="State" helperText={<FormikError name="state" />} 
-          error={Boolean(touched.state && errors.state)}/>
-    </Box>
+        <FormControl  sx={{margin : " 8px" ,width:" 220px"}}>
+        <InputLabel id="demo-simple-select-label">State</InputLabel>
+        <Field name="state"  required as={Select}
+       label="state"  helperText={<FormikError name="state" />} 
+       error={Boolean(touched.state && errors.state)} >
+         
+        <MenuItem value={'CA'}>CA</MenuItem>
+          <MenuItem value={'NY'}>NY</MenuItem>
+          <MenuItem value={'PA'}>PA</MenuItem>
+          <MenuItem value={'FL'}>FL</MenuItem>
+          <MenuItem value={'TN'}>TN</MenuItem>
+ </Field>
+      </FormControl>
     <FormControl  sx={{margin : " 8px" ,width:" 220px"}}>
         <InputLabel id="demo-simple-select-label">Country</InputLabel>
         <Field name="country"  required as={Select}
        label="country"  helperText={<FormikError name="country" />} 
-       error={Boolean(touched.country && errors.country)} >
-         
-        <MenuItem value={'usa'}>USA</MenuItem>
-          <MenuItem value={'canda'}>Canda</MenuItem>
+       error={Boolean(touched.country && errors.country)} >   
+        <MenuItem value={'USA'}>USA</MenuItem>
+          <MenuItem value={'Canda'}>Canda</MenuItem>
  </Field>
       </FormControl>
     <Box margin={1}>
