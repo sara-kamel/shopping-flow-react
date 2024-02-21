@@ -50,8 +50,7 @@ h1 {
   right: 0;
   margin: 5px;
 }
-.cart-product input,
-label {
+.cart-product input{
   align-self: end;
   width: 70px;
 }

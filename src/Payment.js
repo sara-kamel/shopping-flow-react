@@ -1,12 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { getItemsFromLocalStorge, creditCardValidation } from "./helper";
-
-import * as Yup from "yup";
-
+import { getItemsFromLocalStorge} from "./helper";
 export default function Checkout() {
-  const DisplayingErrorMessagesSchema = creditCardValidation(Yup)
 
   const userInformation = getItemsFromLocalStorge("values");
   console.log(userInformation);
@@ -31,7 +27,7 @@ export default function Checkout() {
       </div>
       <Formik
         initialValues={{ creditCard: "", expiredDate: "" }}
-        validationSchema={DisplayingErrorMessagesSchema}
+        // validationSchema={DisplayingErrorMessagesSchema}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           alert(" Gongratlation");
@@ -41,28 +37,9 @@ export default function Checkout() {
           }, 300);
         }}
       >
-        {({ isSubmitting, touched, errors }) => (
+        {({ isSubmitting}) => (
           <Form>
-            <Box margin={1}>
-              <Field
-                name="creditCard"
-                required
-                as={TextField}
-                label="Credit Card "
-                helperText={<FormikError name="creditCard" />}
-                error={Boolean(touched.creditCard && errors.creditCard)}
-              />
-            </Box>
-            <Box margin={1}>
-              <Field
-                name="expiredDate"
-                required
-                as={TextField}
-                label="Expired Date"
-                helperText={<FormikError name="expiredDate" />}
-                error={Boolean(touched.expiredDate && errors.expiredDate)}
-              />
-            </Box>
+       
 
             <Box margin={1}>
               <Button

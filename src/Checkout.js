@@ -5,23 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import {setItemInLocalStorge, userInformationValidation} from './helper'
 import * as Yup from 'yup'; 
  
-const DisplayingErrorMessagesSchema = userInformationValidation(Yup)
-//  Yup.object().shape({
-//   name: Yup.string()
-//     .min(2, 'Too Short!')
-//     .max(50, 'Too Long!')
-//     .required('Required'),
-//     streetAdress: Yup.string().required('Required'),
-//     city: Yup.string().required('Required'),
-//     state: Yup.string().required('Required'),
-//     country: Yup.string().required('Required'),
-//     zipCode: Yup.string()
-//     .matches(/^[0-9]{5}(-[0-9]{4})?$/, 'Please enter a valid ZIP code')
-// .required('Required'),
-//   email: Yup.string().email('Invalid email').required('Required'),
-// });
+
 
 export default function Checkout() {
+  const DisplayingErrorMessagesSchema = userInformationValidation(Yup)
+
   const navigate = useNavigate();
   const FormikError = ({ name }) => (
     <ErrorMessage name={name}>
@@ -92,6 +80,26 @@ export default function Checkout() {
           <MenuItem value={'Canda'}>Canda</MenuItem>
  </Field>
       </FormControl>
+      <Box margin={1}>
+              <Field
+                name="creditCard"
+                required
+                as={TextField}
+                label="Credit Card "
+                helperText={<FormikError name="creditCard" />}
+                error={Boolean(touched.creditCard && errors.creditCard)}
+              />
+            </Box>
+            <Box margin={1}>
+              <Field
+                name="expiredDate"
+                required
+                as={TextField}
+                label="Expired Date"
+                helperText={<FormikError name="expiredDate" />}
+                error={Boolean(touched.expiredDate && errors.expiredDate)}
+              />
+            </Box>
     <Box margin={1}>
 
        <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
