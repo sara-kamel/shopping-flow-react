@@ -13,7 +13,7 @@ import Payment from './Payment';
 
 export default function App() {
   const [cartCount, setCartCount] = useState(() => {
-    const cartList = localStorage.getItem("cartlist");
+    const cartList = localStorage.getItem("cartList");
     if (cartList) {
       return countQuantity(JSON.parse(cartList));
     } else {

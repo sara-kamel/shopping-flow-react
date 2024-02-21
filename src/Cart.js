@@ -13,7 +13,7 @@ import {
 export default function Cart({ onChangeItemsCount }) {
   const navigate = useNavigate();
 
-  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge());
+  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge('cartList'));
 
   useEffect(() => {
     setItemInLocalStorge("cartList", cartList)

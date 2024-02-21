@@ -18,7 +18,7 @@ export default function ProductDetails({ onAddToCart }) {
 
   const product = findItem(ProductsList, id);
   const [quantity, setQuantity] = useState(1);
-  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge());
+  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge('cartList'));
 
   function onAddProductToCart(product, newCount) {
     const newList = [...cartList];
@@ -26,8 +26,9 @@ export default function ProductDetails({ onAddToCart }) {
     if (existItem) {
       existItem.quantity += newCount;
       setCartList(newList);
-      onAddToCart(countQuantity(newList));
+      console.log(cartList)
       setItemInLocalStorge("cartList", cartList);
+      onAddToCart(countQuantity(newList));
     } else {
       addNewItemToCart(newList, product, newCount);
       onAddToCart(countQuantity(newList) + newCount);
@@ -35,11 +36,11 @@ export default function ProductDetails({ onAddToCart }) {
   }
 
   return (
-    <>
+    <section className="product-details">
+      <article>
       <Carousel key={product.id}>
         <Carousel.Item>
           <img
-      
             className="d-block  w-100"
             src={product.images[0]}
             alt="First slide"
@@ -53,7 +54,9 @@ export default function ProductDetails({ onAddToCart }) {
           />
         </Carousel.Item>
       </Carousel>
+      </article>
       <br />
+
       <div style={{ color: "green" }}>
         <h5>
           {product.title}{" "}
@@ -79,6 +82,6 @@ export default function ProductDetails({ onAddToCart }) {
       >
         Add To Cart
       </Button>
-    </>
+    </section>
   );
 }

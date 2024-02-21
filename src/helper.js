@@ -19,8 +19,8 @@ export function updateCartQuantity(list, id, newQuantity) {
   return newList;
 }
 
-export function getItemsFromLocalStorge() {
-  const locelStorge = localStorage.getItem('cartlist');
+export function getItemsFromLocalStorge(key) {
+  const locelStorge = localStorage.getItem(key);
   if (locelStorge) {
     return JSON.parse(locelStorge);
   }
@@ -32,7 +32,7 @@ export function setItemInLocalStorge(key, list) {
 
 export function addNewItemToCart(list, product, newCount) {
   return localStorage.setItem(
-    'cartlist',
+    'cartList',
     JSON.stringify([
       ...list,
       {
