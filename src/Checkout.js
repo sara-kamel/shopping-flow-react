@@ -27,7 +27,7 @@ export default function Checkout() {
       console.log(values)
       setTimeout(() => {
         setItemInLocalStorge('values', values);
-        navigate('/Payment');
+        navigate('/confirmation');
         setSubmitting(false);
       }, 300);
     } }
@@ -58,6 +58,7 @@ export default function Checkout() {
       <Field name="zipCode" required  as={TextField} label="Zip Code" helperText={<FormikError name="zipCode" />} 
           error={Boolean(touched.zipCode && errors.zipCode)}/>
     </Box>
+    <Box>
         <FormControl  sx={{margin : " 8px" ,width:" 220px"}}>
         <InputLabel id="demo-simple-select-label">State</InputLabel>
         <Field name="state"  required as={Select}
@@ -71,6 +72,8 @@ export default function Checkout() {
           <MenuItem value={'TN'}>TN</MenuItem>
  </Field>
       </FormControl>
+      </Box>
+      <Box>
     <FormControl  sx={{margin : " 8px" ,width:" 220px"}}>
         <InputLabel id="demo-simple-select-label">Country</InputLabel>
         <Field name="country"  required as={Select}
@@ -80,6 +83,7 @@ export default function Checkout() {
           <MenuItem value={'Canda'}>Canda</MenuItem>
  </Field>
       </FormControl>
+      </Box>
       <Box margin={1}>
               <Field
                 name="creditCard"
@@ -103,8 +107,8 @@ export default function Checkout() {
     <Box margin={1}>
 
        <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
-             go to payment
-             </Button> 
+             submit
+        </Button> 
     </Box>
     </Form>
        )}
