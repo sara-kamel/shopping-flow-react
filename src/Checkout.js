@@ -106,7 +106,7 @@ export default function Checkout() {
             </Box>
     <Box margin={1}>
 
-       <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
+       <Button type="submit" variant="contained" color="primary" disabled={isSubmitting} onClick={() => navigate('/confirmation')}>
              submit
         </Button> 
     </Box>

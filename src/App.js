@@ -3,14 +3,18 @@ import "./style.css";
 import Container from "react-bootstrap/Container";
 import Products from "./Products";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import Badge from 'react-bootstrap/Badge'
+import Form from "react-bootstrap/Form";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
 import { countQuantity } from "./helper";
-import Checkout from './Checkout';
-
+import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
+import ProductsList from "./ProductsList";
+import { useSearchParams } from "react-router-dom";
 
 export default function App() {
   const [cartCount, setCartCount] = useState(() => {
@@ -21,17 +25,47 @@ export default function App() {
       return 0;
     }
   });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyWordSearch, setKeyWordSearch] = useState("");
+  const searchItem = searchParams.get("title");
+  const onHandleClick = (title) => {
+    if (title) {
+      setSearchParams({ title });
+    } else {
+      setSearchParams("");
+    }
+  };
+  const filterProducts = searchItem
+    ? ProductsList.filter((p) =>
+        p.title.toLowerCase().trim().includes(searchItem.toLowerCase().trim())
+      )
+    : ProductsList;
 
   return (
     <div className="nav-bar">
-      <Navbar bg="primary" data-bs-theme="dark" sticky="top">
+      <Navbar fill bg="info" data-bs-theme="light" sticky="top">
         <Container className="nav-container">
-          <Navbar.Brand >Let's Shop</Navbar.Brand>
+          <h1>Let's Shop</h1>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="&#x1F50D;"
+              className="me-2"
+              aria-label="Search"
+              value={keyWordSearch}
+              onChange={(e) => setKeyWordSearch(e.target.value)}
+            />
+            <Button variant="light" onClick={() => onHandleClick(keyWordSearch)}>
+              Search
+            </Button>
+          </Form>
+
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
           <div>
-            <span>{cartCount}</span>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">
+              Cart <Badge bg="danger">{cartCount}</Badge>
+            </Link>
           </div>
           <Link to="/checkout">Checkout </Link>
           <Link to="/confirmation">Confirmation</Link>
@@ -40,7 +74,10 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        <Route
+          path="/products"
+          element={<Products products={filterProducts} />}
+        />
         <Route
           path="/products/:id"
           element={
@@ -59,10 +96,9 @@ export default function App() {
             />
           }
         />
-         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/confirmation" element={<Confirmation/>} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
-     
     </div>
   );
 }

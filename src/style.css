@@ -9,16 +9,23 @@ body {
   color: black;
   background-color: white;
 }
+
 .nav-container a{
-color:rgb(253, 254, 254);
+color:rgb(255, 255, 255);
 text-decoration: none;
-padding: 10px;
+font-weight:bold;
+padding: 8px;
 border-radius: 4px;
 }
 .nav-container a:hover{
   color: rgb(49, 49, 52);
+  
   background:rgb(255, 255, 255);
 }
+.nav-container h1{
+  color: rgb(255, 255, 255);
+}
+
 .products-list{
   display: flex;
   flex-direction: row;

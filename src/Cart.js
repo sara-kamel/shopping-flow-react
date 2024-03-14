@@ -83,7 +83,7 @@ export default function Cart({ onChangeItemsCount }) {
         <h5>tax: {tax.toFixed(2)}</h5>
         <h5> total: {totalPrice.toFixed(2)}</h5>
 
-        <Button variant="outline-info">Check Out</Button>
+        <Button variant="outline-info" onClick={() =>navigate('/checkout')}>Check Out</Button>
         <br />
         <Button variant="outline-info" onClick={() => navigate('/products')}>
           go to shopping list
