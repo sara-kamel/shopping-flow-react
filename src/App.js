@@ -23,10 +23,10 @@ export default function App() {
   });
 
   return (
-    <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#home">Let's Shop</Navbar.Brand>
+    <div className="nav-bar">
+      <Navbar bg="primary" data-bs-theme="dark" sticky="top">
+        <Container className="nav-container">
+          <Navbar.Brand >Let's Shop</Navbar.Brand>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
           <div>

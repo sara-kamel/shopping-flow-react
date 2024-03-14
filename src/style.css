@@ -9,6 +9,16 @@ body {
   color: black;
   background-color: white;
 }
+.nav-container a{
+color:rgb(253, 254, 254);
+text-decoration: none;
+padding: 10px;
+border-radius: 4px;
+}
+.nav-container a:hover{
+  color: rgb(49, 49, 52);
+  background:rgb(255, 255, 255);
+}
 .products-list{
   display: flex;
   flex-direction: row;
