@@ -10,36 +10,23 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
-import { countQuantity } from "./helper";
+import { countQuantity,getItemsFromLocalStorge } from "./helper";
 import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
-import ProductsList from "./ProductsList";
-import { useSearchParams } from "react-router-dom";
+
+import useSearch from "./useSearch";
 
 export default function App() {
+
   const [cartCount, setCartCount] = useState(() => {
-    const cartList = localStorage.getItem("cartList");
-    if (cartList) {
-      return countQuantity(JSON.parse(cartList));
-    } else {
-      return 0;
-    }
+    const cartList = getItemsFromLocalStorge('cartList');
+      return countQuantity(cartList);
   });
-  const [searchParams, setSearchParams] = useSearchParams();
+
+  
   const [keyWordSearch, setKeyWordSearch] = useState("");
-  const searchItem = searchParams.get("title");
-  const onHandleClick = (title) => {
-    if (title) {
-      setSearchParams({ title });
-    } else {
-      setSearchParams("");
-    }
-  };
-  const filterProducts = searchItem
-    ? ProductsList.filter((p) =>
-        p.title.toLowerCase().trim().includes(searchItem.toLowerCase().trim())
-      )
-    : ProductsList;
+  const {filterProducts, onSearch} = useSearch()
+
 
   return (
     <div className="nav-bar">
@@ -55,7 +42,7 @@ export default function App() {
               value={keyWordSearch}
               onChange={(e) => setKeyWordSearch(e.target.value)}
             />
-            <Button variant="light" onClick={() => onHandleClick(keyWordSearch)}>
+            <Button variant="light" onClick={() => onSearch(keyWordSearch)}>
               Search
             </Button>
           </Form>
