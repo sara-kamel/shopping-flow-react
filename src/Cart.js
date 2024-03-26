@@ -9,15 +9,13 @@ import {
   countQuantity,
   setItemInLocalStorge
 } from './helper';
+import useLocalStorage from './useLocalStorage';
 
 export default function Cart({ onChangeItemsCount }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const { items: cartList, setItems: setCartList } =
+    useLocalStorage('cartList');
 
-  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge('cartList'));
-
-  useEffect(() => {
-    setItemInLocalStorge("cartList", cartList)
-  }, [cartList]);
 
   function onHandleChange(list, id, newQuantity) {
     const newList = updateCartQuantity(list, id, newQuantity);
