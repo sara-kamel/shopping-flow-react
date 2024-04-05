@@ -1,21 +1,13 @@
-import  { useState, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
-import { Button, Card, Form } from 'react-bootstrap';
-import {
-  countTotal,
-  updateCartQuantity,
-  getItemsFromLocalStorge,
-  countQuantity,
-  setItemInLocalStorge
-} from './helper';
-import useLocalStorage from './useLocalStorage';
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Form } from "react-bootstrap";
+import { countTotal, updateCartQuantity, countQuantity } from "./helper";
+import useLocalStorage from "./useLocalStorage";
 
 export default function Cart({ onChangeItemsCount }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { items: cartList, setItems: setCartList } =
-    useLocalStorage('cartList');
-
+    useLocalStorage("cartList");
 
   function onHandleChange(list, id, newQuantity) {
     const newList = updateCartQuantity(list, id, newQuantity);
@@ -37,12 +29,12 @@ export default function Cart({ onChangeItemsCount }) {
             <Card.Body>
               <Card.Title
                 title="show product"
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   navigate(`/products/${product.id}`);
                 }}
               >
-                {product.title}{' '}
+                {product.title}{" "}
               </Card.Title>
               <h1>{product.price}</h1>
             </Card.Body>
@@ -81,9 +73,11 @@ export default function Cart({ onChangeItemsCount }) {
         <h5>tax: {tax.toFixed(2)}</h5>
         <h5> total: {totalPrice.toFixed(2)}</h5>
 
-        <Button variant="outline-info" onClick={() =>navigate('/checkout')}>Check Out</Button>
+        <Button variant="outline-info" onClick={() => navigate("/checkout")}>
+          Check Out
+        </Button>
         <br />
-        <Button variant="outline-info" onClick={() => navigate('/products')}>
+        <Button variant="outline-info" onClick={() => navigate("/products")}>
           go to shopping list
         </Button>
       </div>

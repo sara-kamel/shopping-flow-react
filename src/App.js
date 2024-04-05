@@ -4,29 +4,26 @@ import Container from "react-bootstrap/Container";
 import Products from "./Products";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import Badge from 'react-bootstrap/Badge'
+import Badge from "react-bootstrap/Badge";
 import Form from "react-bootstrap/Form";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
-import { countQuantity,getItemsFromLocalStorge } from "./helper";
+import { countQuantity, getItemsFromLocalStorge } from "./helper";
 import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
 
 import useSearch from "./useSearch";
 
 export default function App() {
-
   const [cartCount, setCartCount] = useState(() => {
-    const cartList = getItemsFromLocalStorge('cartList');
-      return countQuantity(cartList);
+    const cartList = getItemsFromLocalStorge("cartList");
+    return countQuantity(cartList);
   });
 
-  
   const [keyWordSearch, setKeyWordSearch] = useState("");
-  const {filterProducts, onSearch} = useSearch()
-
+  const { filterProducts, onSearch } = useSearch();
 
   return (
     <div className="nav-bar">
@@ -36,7 +33,6 @@ export default function App() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="&#x1F50D;"
               className="me-2"
               aria-label="Search"
               value={keyWordSearch}
