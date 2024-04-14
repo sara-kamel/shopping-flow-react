@@ -7,6 +7,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 export default function Home() {
   return (
+<>
     <Carousel className="banner">
       <Carousel.Item>
         <img src={sale} alt="sale" />
@@ -32,5 +33,6 @@ export default function Home() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </>
   );
 }

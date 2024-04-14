@@ -26,18 +26,15 @@ border-radius: 4px;
   color: rgb(255, 255, 255);
 }
 
-.products-list{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
+
+
+
 .product-details article{
   width: 50%;
   margin: auto;
 
 }
+
 h1 {
   font-weight: 800;
   font-size: 1.5rem;

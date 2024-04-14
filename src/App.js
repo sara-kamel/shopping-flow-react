@@ -13,7 +13,7 @@ import ProductDetails from "./ProductDetails";
 import { countQuantity, getItemsFromLocalStorge } from "./helper";
 import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
-
+import Box from '@mui/material/Box';
 import useSearch from "./useSearch";
 
 export default function App() {
@@ -51,7 +51,7 @@ export default function App() {
             </Link>
           </div>
           <Link to="/checkout">Checkout </Link>
-          <Link to="/confirmation">Confirmation</Link>
+     
         </Container>
       </Navbar>
 
@@ -82,6 +82,17 @@ export default function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
+      <Box
+      height={50}
+      width="100%"
+      my={4}
+      gap={1}
+      p={1}
+      sx={{textAlign: "center", background: "#e4eff3"}}
+    >
+ @2024
+    </Box>
     </div>
+   
   );
 }
