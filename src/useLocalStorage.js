@@ -12,7 +12,7 @@ function useLocalStorage(key) {
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(items));
     setItems(items);
-  }, [items]);
+  }, [key,items]);
 
   return {
     items,

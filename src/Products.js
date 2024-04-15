@@ -33,7 +33,7 @@ export default function Products({ products }) {
         
       >
         {products.map((product) => (
-          <Card sx={{ maxWidth: 345, marginTop:"10px" }}>
+          <Card key={product.id} sx={{ maxWidth: 345, marginTop:"10px" }}>
             <CardActionArea>
               <CardMedia
                 component="img"

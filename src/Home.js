@@ -1,7 +1,5 @@
 import sale from "./assets/sale.jpg";
-import shopping1 from "./assets/shopping1.jpg";
 import shopping2 from "./assets/shopping2.jpg";
-import shopping3 from "./assets/shopping3.jpg";
 import shopping4 from "./assets/shopping4.jpg";
 import Carousel from "react-bootstrap/Carousel";
 
