@@ -29,18 +29,21 @@ border-radius: 4px;
 
 
 
-.product-details article{
-  width: 50%;
+.product-details{
+  border: 3px solid gray;
   margin: auto;
-
+  width: 60%;
+  padding: 10px;
+  margin-top: 30px;
 }
+ .product-details img{
+  height: 500px;
+  margin: 15px;
+ }
 
-h1 {
-  font-weight: 800;
-  font-size: 1.5rem;
-}
-.image-slide {
-  width: 70%;
+.product-details article{
+  display: flex;
+  gap: 10px;
 }
 
 .cart-container {
@@ -71,7 +74,6 @@ h1 {
 /*home page*/
 .banner{
   border: 1px solid gray;
-  width: 80%;
  height: 600px;
   margin: auto;
 }
@@ -82,7 +84,7 @@ h1 {
 
 }
 .banner h3{
-  background-color: rgb(52, 50, 50);
+ background-color: rgb(52, 50, 50);
 width: 50%;
 margin:auto;
 padding: 5px;

@@ -37,7 +37,7 @@ export default function ProductDetails({ onAddToCart }) {
 
   return (
     <section className="product-details">
-      <article>
+    
       <Carousel key={product.id}>
         <Carousel.Item>
           <img
@@ -54,18 +54,17 @@ export default function ProductDetails({ onAddToCart }) {
           />
         </Carousel.Item>
       </Carousel>
-      </article>
-      <br />
-
-      <div style={{ color: "green" }}>
+      <div >
         <h5>
-          {product.title}{" "}
-          <span style={{ border: "1px solid gray", padding: "4px" }}>
-            {product.price}$
-          </span>
+          {product.title}
+        
         </h5>
+        <span>
+             {product.price}$
+          </span>
         <p>{product.description}</p>
       </div>
+      <article>
       <input
         style={{ width: "80px" }}
         type="number"
@@ -82,6 +81,7 @@ export default function ProductDetails({ onAddToCart }) {
       >
         Add To Cart
       </Button>
+      </article>
     </section>
   );
 }

@@ -5,32 +5,30 @@ import Carousel from "react-bootstrap/Carousel";
 
 export default function Home() {
   return (
-<>
-    <Carousel className="banner">
+    <div className="banner">
+    <Carousel data-bs-theme="dark" >
       <Carousel.Item>
-        <img src={sale} alt="sale" />
+        <img className="d-block w-100" src={sale} alt="First slide" />
         <Carousel.Caption>
           <h3>Don't Miss The Annual Sale</h3>
           <p>up to 80% off</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={shopping4} alt="shopping online" />
+        <img className="d-block w-100" src={shopping2} alt="Second slide" />
+        <Carousel.Caption>
+          <h3>Fancy and Casual</h3>
+          <p>you will found your favorite style here. </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img className="d-block w-100" src={shopping4} alt="Third slide" />
         <Carousel.Caption>
           <h3> Fast and Easy!! </h3>
           <p>you do not weast your time in shopping any more</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
-        <img src={shopping2} alt="shopping online" />
-        <Carousel.Caption>
-          <h3>Fancy and Casual</h3>
-          <p>
-           you will found your favorite style here.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
     </Carousel>
-    </>
+    </div>
   );
 }
