@@ -9,10 +9,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { Badge, Input } from "@mui/material";
+import { Input } from "@mui/material";
 import { Link } from "react-router-dom";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 import useSearch from "./useSearch";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const pages = [
   { pageName: "Home", pageLink: "/" },
@@ -33,6 +36,15 @@ function NavBar({ cartCount }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -87,14 +99,7 @@ function NavBar({ cartCount }) {
               {pages.map((page) => (
                 <MenuItem key={page.pageName} onClick={handleCloseNavMenu}>
                   <Link to={page.pageLink}>
-                    <Button>
-                      {page.pageName}
-                      {page.pageName === "cart" ? (
-                        <Badge>{cartCount}</Badge>
-                      ) : (
-                        ""
-                      )}
-                    </Button>
+                    <Button>{page.pageName}</Button>
                   </Link>
                 </MenuItem>
               ))}
@@ -118,12 +123,19 @@ function NavBar({ cartCount }) {
           >
             Shopping
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems:"center" }}>
             {pages.map((page) => (
               <Link key={page.pageName} to={page.pageLink}>
                 <Button style={{ color: "white" }} onClick={handleCloseNavMenu}>
-                  {page.pageName}
-                  {page.pageName === "Cart" ? <Badge>{cartCount}</Badge> : ""}
+                  {page.pageName === "Cart" ? (
+                    <IconButton aria-label="cart">
+                      <StyledBadge badgeContent={cartCount} color="secondary">
+                        <ShoppingCartIcon />
+                      </StyledBadge>
+                    </IconButton>
+                  ) : (
+                    page.pageName
+                  )}
                 </Button>
               </Link>
             ))}
