@@ -40,7 +40,7 @@ export default function Checkout() {
         console.log(values);
         setTimeout(() => {
           setItemInLocalStorge("values", values);
-          navigate("/confirmation");
+          // navigate("/confirmation");
           alert(`Congratulations ${values.name}, you completed shopping successfully!`)
           setSubmitting(false);
        

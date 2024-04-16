@@ -4,8 +4,8 @@ import useLocalStorage from "./useLocalStorage";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Grid } from "@mui/material";
-import { ButtonGroup, Stack } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
+
 
 export default function Cart({ onChangeItemsCount }) {
   const navigate = useNavigate();
@@ -25,19 +25,20 @@ export default function Cart({ onChangeItemsCount }) {
   return (
     <>
       <h1>Your Cart</h1>
-      <Stack direction="horizontal" gap={3}>
+      <Stack direction="horizontal" gap={3} style={{flexWrap: "wrap"}}>
         {cartList.map((product) => (
           <Card
             key={product.id}
-            style={{ width: "18rem", height: "35rem" }}
+            style={{ width: "30rem"}}
             className="p-2"
           >
+          <Card.Body style={{display: "flex" , flexDirection: "row"}}>
             <Card.Img
               variant="top"
               src={product.image}
-              style={{ height: "15rem" }}
+              style={{ height: "30%", width: "30%" }}
             />
-            <Card.Body>
+          
               <Card.Title
                 title="show product"
                 style={{ cursor: "pointer" }}
@@ -47,10 +48,11 @@ export default function Cart({ onChangeItemsCount }) {
               >
                 {product.title}
               </Card.Title>
-              <h1>{product.price}</h1>
+              <h1>{product.price}$</h1>
             </Card.Body>
-
-            <Form.Label>Quantity</Form.Label>
+          <Card.Footer style={{display : "flex", alignContent:'baseline' , gap: "4px"}}>
+            <Form.Label ><b>Quantity</b></Form.Label>
+         
             <Form.Control
               type="number"
               value={product.quantity}
@@ -71,8 +73,9 @@ export default function Cart({ onChangeItemsCount }) {
                 onChangeItemsCount(countQuantity(cartList) - product.quantity);
               }}
             >
-              Delete From Cart
+              Delete
             </Button>
+            </Card.Footer>
           </Card>
         ))}
       </Stack>
