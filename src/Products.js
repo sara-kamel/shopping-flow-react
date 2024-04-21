@@ -7,18 +7,14 @@ import { CardActionArea, CardActions } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { TitleStyles } from "./Styles";
 
 
 export default function Products({ products }) {
   return (
     <>
        <Box
-      height={100}
-      width="100%"
-      my={4}
-      gap={1}
-      p={1}
-      sx={{textAlign: "center", background: "#e4eff3"}}
+      sx={TitleStyles}
     >
   <h1> Products List </h1>
     </Box>
@@ -26,7 +22,7 @@ export default function Products({ products }) {
         spacing={2}
         container
         xs={12}
-        style={{ background:"#e7e7e7",  margin: "auto"}}
+        style={{background:'#c6e1f1', margin: "auto"}}
         gap={2}
         justifyContent="center"     
         padding= "15px"
@@ -37,7 +33,7 @@ export default function Products({ products }) {
             <CardActionArea>
               <CardMedia
                 component="img"
-                border= "1"
+                
                 height="140"
                 image={product.images[0]}
                 alt="product"

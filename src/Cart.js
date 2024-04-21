@@ -5,7 +5,14 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Stack } from "react-bootstrap";
-
+import { Box } from "@mui/material";
+import {
+  TitleStyles,
+  CardBodystyles,
+  CardStyles,
+  CartFooterStyles,
+  CartImgStyles,
+} from "./Styles";
 
 export default function Cart({ onChangeItemsCount }) {
   const navigate = useNavigate();
@@ -24,21 +31,20 @@ export default function Cart({ onChangeItemsCount }) {
 
   return (
     <>
-      <h1>Your Cart</h1>
-      <Stack direction="horizontal" gap={3} style={{flexWrap: "wrap"}}>
+      <Box sx={TitleStyles}>
+        <h1> Your Cart </h1>
+      </Box>
+
+      <Stack direction="horizontal" gap={3} style={{ flexWrap: "wrap" }}>
         {cartList.map((product) => (
-          <Card
-            key={product.id}
-            style={{ width: "30rem"}}
-            className="p-2"
-          >
-          <Card.Body style={{display: "flex" , flexDirection: "row"}}>
-            <Card.Img
-              variant="top"
-              src={product.image}
-              style={{ height: "30%", width: "30%" }}
-            />
-          
+          <Card key={product.id} style={CardStyles} className="p-2">
+            <Card.Body style={CardBodystyles}>
+              <Card.Img
+                variant="top"
+                src={product.image}
+                style={CartImgStyles}
+              />
+
               <Card.Title
                 title="show product"
                 style={{ cursor: "pointer" }}
@@ -50,31 +56,35 @@ export default function Cart({ onChangeItemsCount }) {
               </Card.Title>
               <h1>{product.price}$</h1>
             </Card.Body>
-          <Card.Footer style={{display : "flex", alignContent:'baseline' , gap: "4px"}}>
-            <Form.Label ><b>Quantity</b></Form.Label>
-         
-            <Form.Control
-              type="number"
-              value={product.quantity}
-              onChange={(e) => {
-                if (e.target.value >= 1) {
-                  onHandleChange(
-                    cartList,
-                    product.id,
-                    parseInt(e.target.value)
+            <Card.Footer style={CartFooterStyles}>
+              <Form.Label>
+                <b>Quantity</b>
+              </Form.Label>
+
+              <Form.Control
+                type="number"
+                value={product.quantity}
+                onChange={(e) => {
+                  if (e.target.value >= 1) {
+                    onHandleChange(
+                      cartList,
+                      product.id,
+                      parseInt(e.target.value)
+                    );
+                  }
+                }}
+              />
+              <Button
+                variant="danger"
+                onClick={() => {
+                  setCartList(cartList.filter((p) => p.id !== product.id));
+                  onChangeItemsCount(
+                    countQuantity(cartList) - product.quantity
                   );
-                }
-              }}
-            />
-            <Button
-              variant="danger"
-              onClick={() => {
-                setCartList(cartList.filter((p) => p.id !== product.id));
-                onChangeItemsCount(countQuantity(cartList) - product.quantity);
-              }}
-            >
-              Delete
-            </Button>
+                }}
+              >
+                Delete
+              </Button>
             </Card.Footer>
           </Card>
         ))}

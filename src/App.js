@@ -3,14 +3,20 @@ import "./style.css";
 import Products from "./Products";
 import Home from "./Home";
 import Cart from "./Cart";
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import { countQuantity, getItemsFromLocalStorge } from "./helper";
 import Checkout from "./Checkout";
-import Confirmation from "./Confirmation";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import useSearch from "./useSearch";
 import NavBar from "./NavBar";
+
+const footerStyle = {
+  textAlign: "center",
+  background: "#e4eff3",
+  marginTop: "270px",
+  marginBottom: 0,
+};
 
 export default function App() {
   const [cartCount, setCartCount] = useState(() => {
@@ -18,12 +24,11 @@ export default function App() {
     return countQuantity(cartList);
   });
 
-
   const { filterProducts } = useSearch();
 
   return (
     <>
-    <NavBar  cartCount={cartCount}/>
+      <NavBar cartCount={cartCount} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -49,19 +54,12 @@ export default function App() {
           }
         />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
-      <Box
-      height={50}
-      width="100%"
-      my={4}
-      gap={1}
-      p={1}
-      sx={{textAlign: "center", background: "#e4eff3"}}
-    >
- @2024
-    </Box>
+      <footer>
+        <Box height={50} width="100%" my={4} gap={1} p={1} sx={footerStyle}>
+          @2024
+        </Box>
+      </footer>
     </>
-   
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   TextField,
@@ -8,15 +9,21 @@ import {
   MenuItem,
   FormControl,
   Select,
+  Modal,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { setItemInLocalStorge, userInformationValidation } from "./helper";
 import * as Yup from "yup";
+import {TitleStyles, modalStyle, formStyle} from './Styles'
+
+
+
+const fieldSyle = { width: "70%" };
 
 export default function Checkout() {
   const DisplayingErrorMessagesSchema = userInformationValidation(Yup);
-  const navigate = useNavigate();
-
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const FormikError = ({ name }) => (
     <ErrorMessage name={name}>
@@ -40,18 +47,22 @@ export default function Checkout() {
         console.log(values);
         setTimeout(() => {
           setItemInLocalStorge("values", values);
-          // navigate("/confirmation");
-          alert(`Congratulations ${values.name}, you completed shopping successfully!`)
+          handleOpen();
           setSubmitting(false);
-       
         }, 300);
       }}
     >
-      {({ isSubmitting, touched, errors }) => (
-        <Form >
-          <h1>Enter The Shipping Adress:</h1>
-          <Box margin={1}>
+      {({ isSubmitting, touched, errors, values }) => (
+        <>
+          <Box
+            sx={TitleStyles}
+          >
+            <h1> Checkout and Payment </h1>
+          </Box>
+
+          <Form style={formStyle}>
             <Field
+              style={fieldSyle}
               name="name"
               required
               as={TextField}
@@ -59,9 +70,8 @@ export default function Checkout() {
               helperText={<FormikError name="name" />}
               error={Boolean(touched.name && errors.name)}
             />
-          </Box>
-          <Box margin={1}>
             <Field
+              style={fieldSyle}
               name="email"
               required
               type="email"
@@ -70,19 +80,17 @@ export default function Checkout() {
               helperText={<FormikError name="email" />}
               error={Boolean(touched.email && errors.email)}
             />
-          </Box>
-          <Box margin={1}>
             <Field
+              style={fieldSyle}
               name="streetAdress"
               required
               as={TextField}
               label="Street Adress"
               helperText={<FormikError name="streetAdress" />}
               error={Boolean(touched.streetAdress && errors.streetAdress)}
-            />
-          </Box>
-          <Box margin={1}>
+            />{" "}
             <Field
+              style={fieldSyle}
               name="city"
               required
               as={TextField}
@@ -90,10 +98,8 @@ export default function Checkout() {
               helperText={<FormikError name="city" />}
               error={Boolean(touched.city && errors.city)}
             />
-          </Box>
-
-          <Box margin={1}>
             <Field
+              style={fieldSyle}
               name="zipCode"
               required
               as={TextField}
@@ -101,9 +107,7 @@ export default function Checkout() {
               helperText={<FormikError name="zipCode" />}
               error={Boolean(touched.zipCode && errors.zipCode)}
             />
-          </Box>
-          <Box>
-            <FormControl sx={{ margin: " 8px", width: " 220px" }}>
+            <FormControl sx={fieldSyle}>
               <InputLabel id="demo-simple-select-label">State</InputLabel>
               <Field
                 name="state"
@@ -120,9 +124,7 @@ export default function Checkout() {
                 <MenuItem value={"TN"}>TN</MenuItem>
               </Field>
             </FormControl>
-          </Box>
-          <Box>
-            <FormControl sx={{ margin: " 8px", width: " 220px" }}>
+            <FormControl sx={fieldSyle}>
               <InputLabel id="demo-simple-select-label">Country</InputLabel>
               <Field
                 name="country"
@@ -136,9 +138,8 @@ export default function Checkout() {
                 <MenuItem value={"Canda"}>Canda</MenuItem>
               </Field>
             </FormControl>
-          </Box>
-          <Box margin={1}>
             <Field
+              style={fieldSyle}
               name="creditCard"
               required
               as={TextField}
@@ -146,9 +147,8 @@ export default function Checkout() {
               helperText={<FormikError name="creditCard" />}
               error={Boolean(touched.creditCard && errors.creditCard)}
             />
-          </Box>
-          <Box margin={1}>
             <Field
+              style={fieldSyle}
               name="expiredDate"
               required
               as={TextField}
@@ -156,18 +156,40 @@ export default function Checkout() {
               helperText={<FormikError name="expiredDate" />}
               error={Boolean(touched.expiredDate && errors.expiredDate)}
             />
-          </Box>
-          <Box margin={1}>
             <Button
               type="submit"
               variant="contained"
               color="primary"
               disabled={isSubmitting}
+              style={{ width: "50%" }}
             >
               submit
             </Button>
-          </Box>
-        </Form>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={modalStyle}>
+                <Typography
+                  id="modal-modal-title"
+                  variant="h4"
+                  component="h2"
+                  style={{ color: "green" }}
+                >
+                  Congratulation {values.name}!.
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  you complate your shopping successfully! your order will
+                  arrive on this Adress: {values.streetAdress}, {values.city},{" "}
+                  {values.state} {values.zipCode} {values.country}. We will send
+                  the track number to this Email : {values.email}
+                </Typography>
+              </Box>
+            </Modal>
+          </Form>
+        </>
       )}
     </Formik>
   );
