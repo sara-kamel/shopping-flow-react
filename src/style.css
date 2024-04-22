@@ -87,7 +87,7 @@ border-radius: 4px;
   margin-top: 40px;
 }
 .banner img{
-  height: 600px;
+  height: 500px;
 
 }
 .banner h3{
@@ -96,8 +96,10 @@ width: 50%;
 margin:auto;
 padding: 5px;
 text-align: center;
+color: white;
 }
 .banner p{
+  color: white;
   background-color: rgb(202, 159, 4);
 width: 60%;
 margin:auto;

@@ -31,13 +31,13 @@ export const FormStyles = {
 };
 
 //cart styles section
-export const CardStyles = { width: "30rem", height: "22rem" };
+export const CardStyles = { width: "30rem" };
 export const CardBodystyles = {
   display: "flex",
   flexDirection: "row",
   gap: "20px",
 };
-export const CartImgStyles = { height: "30%", width: "30%" };
+export const CartImgStyles = { height: "100px", width: "100px" };
 export const CartFooterStyles = {
   display: "flex",
   alignContent: "baseline",
