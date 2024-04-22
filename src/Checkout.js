@@ -13,11 +13,11 @@ import {
 } from "@mui/material";
 import { setItemInLocalStorge, userInformationValidation } from "./helper";
 import * as Yup from "yup";
-import {TitleStyles, modalStyle, formStyle} from './Styles'
+import {TitleStyles, ModalStyles, FormStyles, FormFieldSyles} from './Styles'
 
 
 
-const fieldSyle = { width: "70%" };
+
 
 export default function Checkout() {
   const DisplayingErrorMessagesSchema = userInformationValidation(Yup);
@@ -60,9 +60,9 @@ export default function Checkout() {
             <h1> Checkout and Payment </h1>
           </Box>
 
-          <Form style={formStyle}>
+          <Form style={FormStyles}>
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="name"
               required
               as={TextField}
@@ -71,7 +71,7 @@ export default function Checkout() {
               error={Boolean(touched.name && errors.name)}
             />
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="email"
               required
               type="email"
@@ -81,7 +81,7 @@ export default function Checkout() {
               error={Boolean(touched.email && errors.email)}
             />
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="streetAdress"
               required
               as={TextField}
@@ -90,7 +90,7 @@ export default function Checkout() {
               error={Boolean(touched.streetAdress && errors.streetAdress)}
             />{" "}
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="city"
               required
               as={TextField}
@@ -99,7 +99,7 @@ export default function Checkout() {
               error={Boolean(touched.city && errors.city)}
             />
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="zipCode"
               required
               as={TextField}
@@ -107,7 +107,7 @@ export default function Checkout() {
               helperText={<FormikError name="zipCode" />}
               error={Boolean(touched.zipCode && errors.zipCode)}
             />
-            <FormControl sx={fieldSyle}>
+            <FormControl sx={FormFieldSyles}>
               <InputLabel id="demo-simple-select-label">State</InputLabel>
               <Field
                 name="state"
@@ -124,7 +124,7 @@ export default function Checkout() {
                 <MenuItem value={"TN"}>TN</MenuItem>
               </Field>
             </FormControl>
-            <FormControl sx={fieldSyle}>
+            <FormControl sx={FormFieldSyles}>
               <InputLabel id="demo-simple-select-label">Country</InputLabel>
               <Field
                 name="country"
@@ -139,7 +139,7 @@ export default function Checkout() {
               </Field>
             </FormControl>
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="creditCard"
               required
               as={TextField}
@@ -148,7 +148,7 @@ export default function Checkout() {
               error={Boolean(touched.creditCard && errors.creditCard)}
             />
             <Field
-              style={fieldSyle}
+              style={FormFieldSyles}
               name="expiredDate"
               required
               as={TextField}
@@ -171,7 +171,7 @@ export default function Checkout() {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box sx={modalStyle}>
+              <Box sx={ModalStyles}>
                 <Typography
                   id="modal-modal-title"
                   variant="h4"

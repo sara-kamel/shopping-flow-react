@@ -10,13 +10,9 @@ import Checkout from "./Checkout";
 import Box from "@mui/material/Box";
 import useSearch from "./useSearch";
 import NavBar from "./NavBar";
+import {FooterStyles} from './Styles'
 
-const footerStyle = {
-  textAlign: "center",
-  background: "#e4eff3",
-  marginTop: "270px",
-  marginBottom: 0,
-};
+
 
 export default function App() {
   const [cartCount, setCartCount] = useState(() => {
@@ -56,7 +52,7 @@ export default function App() {
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <footer>
-        <Box height={50} width="100%" my={4} gap={1} p={1} sx={footerStyle}>
+        <Box sx={FooterStyles}>
           @2024
         </Box>
       </footer>
