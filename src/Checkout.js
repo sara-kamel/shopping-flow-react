@@ -13,11 +13,7 @@ import {
 } from "@mui/material";
 import { setItemInLocalStorge, userInformationValidation } from "./helper";
 import * as Yup from "yup";
-import {TitleStyles, ModalStyles, FormStyles, FormFieldSyles} from './Styles'
-
-
-
-
+import { TitleStyles, ModalStyles, FormStyles, FormFieldSyles } from "./Styles";
 
 export default function Checkout() {
   const DisplayingErrorMessagesSchema = userInformationValidation(Yup);
@@ -41,6 +37,8 @@ export default function Checkout() {
         zipCode: "",
         state: "",
         country: "",
+        creditCard: "",
+        expiredDate: "",
       }}
       validationSchema={DisplayingErrorMessagesSchema}
       onSubmit={(values, { setSubmitting }) => {
@@ -52,11 +50,9 @@ export default function Checkout() {
         }, 300);
       }}
     >
-      {({ isSubmitting, touched, errors, values }) => (
+      {({ isSubmitting, touched, errors, values, resetForm }) => (
         <>
-          <Box
-            sx={TitleStyles}
-          >
+          <Box sx={TitleStyles}>
             <h1> Checkout and Payment </h1>
           </Box>
 
@@ -186,6 +182,17 @@ export default function Checkout() {
                   {values.state} {values.zipCode} {values.country}. We will send
                   the track number to this Email : {values.email}
                 </Typography>
+                <br />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    handleClose();
+                    resetForm();
+                  }}
+                >
+                  Ok
+                </Button>
               </Box>
             </Modal>
           </Form>
