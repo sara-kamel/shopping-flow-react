@@ -1,6 +1,4 @@
-import sale from "./assets/sale.jpg";
-import shopping2 from "./assets/shopping2.jpg";
-import shopping4 from "./assets/shopping4.jpg";
+
 import Carousel from "react-bootstrap/Carousel";
 
 export default function Home() {
