@@ -107,7 +107,7 @@ function NavBar({ cartCount }) {
           </Box>
           <Typography
             variant="h5"
-            noWrap
+            wrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
@@ -115,8 +115,7 @@ function NavBar({ cartCount }) {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontWeight: 500,
               color: "inherit",
               textDecoration: "none",
             }}
