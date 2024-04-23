@@ -151,6 +151,7 @@ function NavBar({ cartCount }) {
             onClick={() => {
               onSearch(keyWordSearch);
               navigate(`/products?title=${keyWordSearch}`);
+              setKeyWordSearch("")
             }}
           >
             Search

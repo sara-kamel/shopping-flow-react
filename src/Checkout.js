@@ -11,15 +11,17 @@ import {
   Select,
   Modal,
 } from "@mui/material";
-import { setItemInLocalStorge, userInformationValidation } from "./helper";
+import { setItemInLocalStorge, userInformationValidation, getItemsFromLocalStorge } from "./helper";
 import * as Yup from "yup";
 import { TitleStyles, ModalStyles, FormStyles, FormFieldSyles } from "./Styles";
 
 export default function Checkout() {
+
   const DisplayingErrorMessagesSchema = userInformationValidation(Yup);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const modalValues = getItemsFromLocalStorge("values")
 
   const FormikError = ({ name }) => (
     <ErrorMessage name={name}>
@@ -41,16 +43,17 @@ export default function Checkout() {
         expiredDate: "",
       }}
       validationSchema={DisplayingErrorMessagesSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         console.log(values);
         setTimeout(() => {
           setItemInLocalStorge("values", values);
           handleOpen();
           setSubmitting(false);
+          resetForm();
         }, 300);
       }}
     >
-      {({ isSubmitting, touched, errors, values, resetForm }) => (
+      {({ isSubmitting, touched, errors}) => (
         <>
           <Box sx={TitleStyles}>
             <h1> Checkout and Payment </h1>
@@ -174,13 +177,13 @@ export default function Checkout() {
                   component="h2"
                   style={{ color: "green" }}
                 >
-                  Congratulation {values.name}!.
+                  Congratulation {modalValues.name}!.
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   you complate your shopping successfully! your order will
-                  arrive on this Adress: {values.streetAdress}, {values.city},{" "}
-                  {values.state} {values.zipCode} {values.country}. We will send
-                  the track number to this Email : {values.email}
+                  arrive on this Adress: {modalValues.streetAdress}, {modalValues.city},{" "}
+                  {modalValues.state} {modalValues.zipCode} {modalValues.country}. We will send
+                  the track number to this email: {modalValues.email}
                 </Typography>
                 <br />
                 <Button
@@ -188,7 +191,6 @@ export default function Checkout() {
                   color="primary"
                   onClick={() => {
                     handleClose();
-                    resetForm();
                   }}
                 >
                   Ok
