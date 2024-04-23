@@ -6,13 +6,14 @@ export default function Home() {
     <div className="banner">
       <Carousel data-bs-theme="dark">
         <Carousel.Item>
+          
           <img
             className="d-block w-100"
             src="https://as1.ftcdn.net/v2/jpg/02/71/77/56/1000_F_271775672_yo8ZgraN2IHGbfqP2k0PsLjwvmatUNUJ.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Don't Miss The Annual Sale!</h3>
+            <h3>Don't miss this Sale!</h3>
             <p>Up to 80% off</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -24,7 +25,7 @@ export default function Home() {
           />
           <Carousel.Caption>
             <h3>Fancy and Casual!</h3>
-            <p>You will find what you like here. </p>
+            <p>You will find what you like here </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -34,7 +35,7 @@ export default function Home() {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3> Fast and Easy!! </h3>
+            <h3> Fast and Easy! </h3>
             <p>You will not waste time anymore</p>
           </Carousel.Caption>
         </Carousel.Item>
