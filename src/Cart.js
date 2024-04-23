@@ -92,9 +92,9 @@ export default function Cart({ onChangeItemsCount }) {
 
       <hr />
       <div>
-        <h5>price: {total.toFixed(2)}</h5>
-        <h5>tax: {tax.toFixed(2)}</h5>
-        <h5> total: {totalPrice.toFixed(2)}</h5>
+        <h5><b>Price:</b> {total.toFixed(2)}$</h5>
+        <h5><b>Tax:</b> {tax.toFixed(2)}$</h5>
+        <h5> <b>Total:</b> {totalPrice.toFixed(2)}$</h5>
         <Button variant="outline-info" onClick={() => navigate("/checkout")}>
           Check Out
         </Button>

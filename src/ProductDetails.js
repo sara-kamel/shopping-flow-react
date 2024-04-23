@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
@@ -18,7 +17,9 @@ export default function ProductDetails({ onAddToCart }) {
 
   const product = findItem(ProductsList, id);
   const [quantity, setQuantity] = useState(1);
-  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge('cartList'));
+  const [cartList, setCartList] = useState(() =>
+    getItemsFromLocalStorge("cartList")
+  );
 
   function onAddProductToCart(product, newCount) {
     const newList = [...cartList];
@@ -26,7 +27,7 @@ export default function ProductDetails({ onAddToCart }) {
     if (existItem) {
       existItem.quantity += newCount;
       setCartList(newList);
-      console.log(cartList)
+      console.log(cartList);
       setItemInLocalStorge("cartList", cartList);
       onAddToCart(countQuantity(newList));
     } else {
@@ -36,52 +37,49 @@ export default function ProductDetails({ onAddToCart }) {
   }
 
   return (
-    <section className="product-details">
-    
-      <Carousel key={product.id}>
-        <Carousel.Item>
-          <img
-            className="d-block  w-100"
-            src={product.images[0]}
-            alt="First slide"
+    <>
+      <section className="product-details">
+        <Carousel key={product.id}>
+          {product.images.map((image, index) => (
+            <Carousel.Item key={index}>
+              <div
+                style={{
+                  height: "500px",
+                  width: "100%",
+                  backgroundImage: `url(${image})`,
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+            </Carousel.Item>
+          ))}
+        </Carousel> 
+        <article>
+       <div>
+          <h3>{product.title} {product.price}$</h3>
+          <p>{product.description}</p>
+        </div>
+        </article>
+        <article>
+          <input
+            style={{ width: "80px" }}
+            type="number"
+            value={quantity}
+            onChange={(e) => {
+              if (e.target.value >= 1) setQuantity(parseInt(e.target.value));
+            }}
           />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={product.images[1]}
-            alt="Second slide"
-          />
-        </Carousel.Item>
-      </Carousel>
-      <div >
-        <h5>
-          {product.title}
-        
-        </h5>
-        <span>
-             {product.price}$
-          </span>
-        <p>{product.description}</p>
-      </div>
-      <article>
-      <input
-        style={{ width: "80px" }}
-        type="number"
-        value={quantity}
-        onChange={(e) => {
-          if (e.target.value >= 1) setQuantity(parseInt(e.target.value));
-        }}
-      />
-      <Button
-        onClick={() => {
-          onAddProductToCart(product, quantity);
-          navigate("/cart");
-        }}
-      >
-        Add To Cart
-      </Button>
-      </article>
-    </section>
+          <Button
+            onClick={() => {
+              onAddProductToCart(product, quantity);
+              navigate("/cart");
+            }}
+          >
+            Add To Cart
+          </Button>
+        </article>
+      </section>
+    </>
   );
 }

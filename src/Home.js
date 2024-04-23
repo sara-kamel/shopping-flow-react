@@ -12,8 +12,8 @@ export default function Home() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Don't Miss The Annual Sale</h3>
-            <p>up to 80% off</p>
+            <h3>Don't Miss The Annual Sale!</h3>
+            <p>Up to 80% off</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -23,8 +23,8 @@ export default function Home() {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Fancy and Casual</h3>
-            <p>you will found your favorite style here. </p>
+            <h3>Fancy and Casual!</h3>
+            <p>You will find what you like here. </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -35,7 +35,7 @@ export default function Home() {
           />
           <Carousel.Caption>
             <h3> Fast and Easy!! </h3>
-            <p>you do not weast your time in shopping any more</p>
+            <p>You will not waste time anymore</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
