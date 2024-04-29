@@ -4,12 +4,16 @@ Shopping-flow-react is an interactive web application designed to streamline the
 
 # Features
 
-**Product Browsing:** Browse a catalog of products in a clean, grid layout.
-**Cart Management:** Add items to the cart, adjust their quantities, or remove them. Cart state persists between sessions using local storage.
-**Checkout Simulation:** Complete the checkout process with data validation to simulate a real purchase.
-**Responsive Design:** Ensures a great user experience on desktops and mobile devices.
+## Product Browsing:
+ Browse a catalog of products in a clean, grid layout.
+## Cart Management:
+ Add items to the cart, adjust their quantities, or remove them. Cart state persists between sessions using local storage.
+## Checkout Simulation:
+ Complete the checkout process with data validation to simulate a real purchase.
+## Responsive Design:
+ Ensures a great user experience on desktops and mobile devices.
 
-## Tools
+# Tools
 
 React, MUI (Material-UI), Bootstrap, Formik and Yup.
 
