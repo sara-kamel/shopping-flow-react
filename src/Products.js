@@ -15,12 +15,7 @@ export default function Products({ products }) {
       <Box sx={TitleStyles}>
         <h1> Products List </h1>
       </Box>
-      <Grid
-        spacing={2}
-        container
-        xs={12}
-        style={ProductsCridStyles}
-      >
+      <Grid spacing={2} container xs={12} style={ProductsCridStyles}>
         {products.map((product) => (
           <Card key={product.id} sx={{ maxWidth: 345, marginTop: "10px" }}>
             <CardActionArea>
