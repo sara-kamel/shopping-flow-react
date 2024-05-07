@@ -10,6 +10,8 @@ import {
   countQuantity,
   setItemInLocalStorge,
 } from "./helper";
+import Box from "@mui/material/Box";
+import {TitleStyles} from './Styles'
 
 export default function ProductDetails({ onAddToCart }) {
   const navigate = useNavigate();
@@ -38,6 +40,9 @@ export default function ProductDetails({ onAddToCart }) {
 
   return (
     <>
+     <Box sx={TitleStyles}>
+        <h1> {product.title} </h1>
+      </Box>
       <section className="product-details">
         <Carousel key={product.id}>
           {product.images.map((image, index) => (
@@ -73,6 +78,7 @@ export default function ProductDetails({ onAddToCart }) {
           <Button
             onClick={() => {
               onAddProductToCart(product, quantity);
+              alert("Item added to your cart")
               navigate("/cart");
             }}
           >

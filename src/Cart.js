@@ -80,7 +80,7 @@ export default function Cart({ onChangeItemsCount }) {
                   setCartList(cartList.filter((p) => p.id !== product.id));
                   onChangeItemsCount(
                     countQuantity(cartList) - product.quantity
-                  );
+                  );              
                 }}
               >
                 Delete
