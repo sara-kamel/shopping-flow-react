@@ -20,8 +20,6 @@ function useSearch(){
             p.title.toLowerCase().trim().includes(searchItem.toLowerCase().trim())
           )
         : ProductsList;
-        console.log(searchParams)
-    console.log(filterProducts)
   
       return {filterProducts, onSearch}
 }

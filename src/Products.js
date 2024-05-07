@@ -10,13 +10,12 @@ import Button from "@mui/material/Button";
 import { TitleStyles, ProductsCridStyles } from "./Styles";
 
 export default function Products({ products }) {
-  // const [messageForUser, setMessageForUser] = useState("")
   return (
     <>
       <Box sx={TitleStyles}>
         <h1> Products List </h1>
       </Box>
-      <Box>{!products.length > 0 && (<h4>There is <b>NO</b> matching your search </h4>) }</Box>
+      <Box>{!products.length > 0 && (<h4>There are <b>NO</b> matching products for your search </h4>) }</Box>
       <Grid spacing={2} container xs={12} style={ProductsCridStyles}>
         {products.map((product) => (
           <Card key={product.id} sx={{ maxWidth: 345, marginTop: "10px" }}>
