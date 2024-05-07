@@ -27,7 +27,7 @@ function NavBar({ cartCount }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [keyWordSearch, setKeyWordSearch] = useState(null);
   const navigate = useNavigate(null);
-  const { onSearch } = useSearch("");
+  const { onSearch } = useSearch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -149,9 +149,12 @@ function NavBar({ cartCount }) {
           <Button
             variant="light"
             onClick={() => {
+            if(keyWordSearch){
               onSearch(keyWordSearch);
               navigate(`/products?title=${keyWordSearch}`);
               setKeyWordSearch("")
+            }
+             
             }}
           >
             Search
