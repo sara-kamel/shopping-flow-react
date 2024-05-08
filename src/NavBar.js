@@ -20,7 +20,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const pages = [
   { pageName: "Home", pageLink: "/" },
   { pageName: "Products", pageLink: "/products" },
-  { pageName: "Cart", pageLink: "/cart" },
+  // { pageName: "Cart", pageLink: "/cart" },
 ];
 
 function NavBar({ cartCount }) {
@@ -50,7 +50,7 @@ function NavBar({ cartCount }) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -106,7 +106,7 @@ function NavBar({ cartCount }) {
             </Menu>
           </Box>
           <Typography
-            variant="h5"
+            variant="h6"
             wrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -122,20 +122,16 @@ function NavBar({ cartCount }) {
           >
             Shopping
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems:"center" }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+            }}
+          >
             {pages.map((page) => (
               <Link key={page.pageName} to={page.pageLink}>
-                <Button style={{ color: "white" }} onClick={handleCloseNavMenu}>
-                  {page.pageName === "Cart" ? (
-                    <IconButton aria-label="cart">
-                      <StyledBadge badgeContent={cartCount} color="secondary">
-                        <ShoppingCartIcon />
-                      </StyledBadge>
-                    </IconButton>
-                  ) : (
-                    page.pageName
-                  )}
-                </Button>
+                <Button style={{ color: "white" }}>{page.pageName}</Button>
               </Link>
             ))}
           </Box>
@@ -149,16 +145,22 @@ function NavBar({ cartCount }) {
           <Button
             variant="light"
             onClick={() => {
-            if(keyWordSearch){
-              onSearch(keyWordSearch);
-              navigate(`/products?title=${keyWordSearch}`);
-              setKeyWordSearch("")
-            }
-             
+              if (keyWordSearch) {
+                onSearch(keyWordSearch);
+                navigate(`/products?title=${keyWordSearch}`);
+                setKeyWordSearch("");
+              }
             }}
           >
             Search
           </Button>
+          <Link to={"/cart"}>
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={cartCount} color="secondary">
+                <ShoppingCartIcon />
+              </StyledBadge>
+            </IconButton>
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>
