@@ -20,12 +20,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const pages = [
   { pageName: "Home", pageLink: "/" },
   { pageName: "Products", pageLink: "/products" },
-  // { pageName: "Cart", pageLink: "/cart" },
 ];
 
 function NavBar({ cartCount }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [keyWordSearch, setKeyWordSearch] = useState(null);
+  const [keyWordSearch, setKeyWordSearch] = useState("");
   const navigate = useNavigate(null);
   const { onSearch } = useSearch();
 

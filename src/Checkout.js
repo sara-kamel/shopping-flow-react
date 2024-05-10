@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage} from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   TextField,
   Button,
@@ -11,17 +11,20 @@ import {
   Select,
   Modal,
 } from "@mui/material";
-import { setItemInLocalStorge, userInformationValidation, getItemsFromLocalStorge } from "./helper";
+import {
+  setItemInLocalStorge,
+  userInformationValidation,
+  getItemsFromLocalStorge,
+} from "./helper";
 import * as Yup from "yup";
 import { TitleStyles, ModalStyles, FormStyles, FormFieldSyles } from "./Styles";
 
 export default function Checkout() {
-
   const DisplayingErrorMessagesSchema = userInformationValidation(Yup);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const modalValues = getItemsFromLocalStorge("values")
+  const modalValues = getItemsFromLocalStorge("values");
 
   const FormikError = ({ name }) => (
     <ErrorMessage name={name}>
@@ -53,7 +56,7 @@ export default function Checkout() {
         }, 300);
       }}
     >
-      {({ isSubmitting, touched, errors}) => (
+      {({ isSubmitting, touched, errors }) => (
         <>
           <Box sx={TitleStyles}>
             <h1> Checkout and Payment </h1>
@@ -137,24 +140,26 @@ export default function Checkout() {
                 <MenuItem value={"Canda"}>Canda</MenuItem>
               </Field>
             </FormControl>
-            <Field
+        
+              <Field style={FormFieldSyles}
+                name="creditCard"
+                required
+                as={TextField}
+                label="Credit Card "
+                helperText={<FormikError name="creditCard" />}
+                error={Boolean(touched.creditCard && errors.creditCard)}
+              />
+              <Field
               style={FormFieldSyles}
-              name="creditCard"
-              required
-              as={TextField}
-              label="Credit Card "
-              helperText={<FormikError name="creditCard" />}
-              error={Boolean(touched.creditCard && errors.creditCard)}
-            />
-            <Field
-              style={FormFieldSyles}
-              name="expiredDate"
-              required
-              as={TextField}
-              label="Expired Date"
-              helperText={<FormikError name="expiredDate" />}
-              error={Boolean(touched.expiredDate && errors.expiredDate)}
-            />
+                name="expiredDate"
+                required
+                as={TextField}
+                label="Expired Date"
+                helperText={<FormikError name="expiredDate" />}
+                error={Boolean(touched.expiredDate && errors.expiredDate)}
+              />
+       
+            
             <Button
               type="submit"
               variant="contained"
@@ -164,6 +169,7 @@ export default function Checkout() {
             >
               submit
             </Button>
+            
             <Modal
               open={open}
               onClose={handleClose}
@@ -181,9 +187,10 @@ export default function Checkout() {
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   you complate your shopping successfully! your order will
-                  arrive on this Adress: {modalValues.streetAdress}, {modalValues.city},{" "}
-                  {modalValues.state} {modalValues.zipCode} {modalValues.country}. We will send
-                  the track number to this email: {modalValues.email}
+                  arrive on this Adress: {modalValues.streetAdress},{" "}
+                  {modalValues.city}, {modalValues.state} {modalValues.zipCode}{" "}
+                  {modalValues.country}. We will send the track number to this
+                  email: {modalValues.email}
                 </Typography>
                 <br />
                 <Button

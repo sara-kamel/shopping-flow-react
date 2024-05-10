@@ -8,6 +8,7 @@ export const TitleStyles = {
   paddingTop: "20px",
 };
 export const FormFieldSyles = { width: "70%" };
+
 export const ModalStyles = {
   position: "absolute",
   top: "50%",
