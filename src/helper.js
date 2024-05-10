@@ -15,8 +15,13 @@ export function findItem(list, id) {
 export function updateCartQuantity(list, id, newQuantity) {
   const newList = [...list];
   const findProduct = findItem(list, id);
-  findProduct.quantity = newQuantity;
-  return newList;
+  if (!findProduct) {
+    return newList;
+  } else { 
+    findProduct.quantity = newQuantity;
+    return newList;
+  }
+
 }
 
 export function getItemsFromLocalStorge(key) {
@@ -31,14 +36,14 @@ export function setItemInLocalStorge(key, list) {
 }
 
 export function addNewItemToCart(list, product, newCount) {
-  setItemInLocalStorge('cartList', [
+  setItemInLocalStorge("cartList", [
     ...list,
     {
       title: product.title,
       price: product.price,
       id: product.id,
       image: product.images[0],
-      quantity: newCount
+      quantity: newCount,
     },
   ]);
 }

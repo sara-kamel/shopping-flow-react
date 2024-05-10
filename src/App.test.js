@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { countTotal } from "./helper";
+import { countTotal, updateCartQuantity } from "./helper";
 
 describe("test count total function", () => {
   it("Count total from array ", () => {
@@ -57,5 +57,30 @@ describe("test count total function", () => {
     ];
     const total = countTotal(list);
     expect(total).toBe(45);
+  });
+});
+
+describe("test updateCartQuantity function", () => {
+  it("update item quantity with vaild id", () => {
+    const list = [{ id: 1, quantity: 2 }];
+    const id = 1;
+    const newQuantity = 5;
+    expect(updateCartQuantity(list, id, newQuantity)).toStrictEqual([
+      { id: 1, quantity: 5 },
+    ]);
+  }),
+    it("update item quantity with unvaild id", () => {
+      const list = [{ id: 1, quantity: 2 }];
+      const id = 2;
+      const newQuantity = 5;
+      expect(updateCartQuantity(list, id, newQuantity)).toStrictEqual([
+        { id: 1, quantity: 2 },
+      ]);
+    });
+  it("test function with empty list", () => {
+    const list = [];
+    const id = 2;
+    const newQuantity = 5;
+    expect(updateCartQuantity(list, id, newQuantity)).toStrictEqual([]);
   });
 });
