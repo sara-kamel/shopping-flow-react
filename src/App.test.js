@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+
 import { countTotal, updateCartQuantity } from "./helper";
 
 describe("test count total function", () => {
@@ -84,3 +84,5 @@ describe("test updateCartQuantity function", () => {
     expect(updateCartQuantity(list, id, newQuantity)).toStrictEqual([]);
   });
 });
+
+

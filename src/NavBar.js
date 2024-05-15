@@ -52,7 +52,6 @@ function NavBar({ cartCount }) {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -106,9 +105,8 @@ function NavBar({ cartCount }) {
           </Box>
           <Typography
             variant="h6"
-            wrap
+            noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -155,7 +153,7 @@ function NavBar({ cartCount }) {
           </Button>
           <Link to={"/cart"}>
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={cartCount} color="secondary">
+              <StyledBadge badgeContent={cartCount} color="secondary" data-testid="cart-Count">
                 <ShoppingCartIcon />
               </StyledBadge>
             </IconButton>

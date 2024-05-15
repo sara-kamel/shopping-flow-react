@@ -15,8 +15,9 @@ export default function Products({ products }) {
       <Box sx={TitleStyles}>
         <h1> Products List </h1>
       </Box>
-      <Box>{!products.length > 0 && (<h4>There are <b>NO</b> matching products for your search </h4>) }</Box>
-      <Grid spacing={2} container xs={12} style={ProductsCridStyles}>
+      <Box>{!products.length > 0 && (<h4>There are no matching products for your search </h4>) }</Box>
+      <Box>{products.length > 0 && (<h4>{products.length === 1 ? "There is 1 product." : `There are ${products.length} products`}</h4>) }</Box>
+      <Grid spacing={2} container  style={ProductsCridStyles}>
         {products.map((product) => (
           <Card key={product.id} sx={{ maxWidth: 345, marginTop: "10px" }}>
             <CardActionArea>
