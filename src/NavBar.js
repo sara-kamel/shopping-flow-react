@@ -133,6 +133,7 @@ function NavBar({ cartCount }) {
             ))}
           </Box>
           <Input
+            data-testid= "search-input"
             style={{ color: "white" }}
             type="text"
             label="Search input"

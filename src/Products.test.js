@@ -33,6 +33,6 @@ describe("", () => {
     const messageElement = screen.queryByText(
       /There are No matching products for your search/i
     );
-    expect(messageElement).not.toBeVisible();
+    expect(messageElement).not.toBeInTheDocument();
   });
 });
