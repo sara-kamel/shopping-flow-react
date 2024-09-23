@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.css";
 import Products from "./Products";
 import Home from "./Home";
-import Cart from "./Cart";
+import Cart from "./cart/Cart";
 import { Route, Routes } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import { countQuantity, getItemsFromLocalStorge } from "./helper";

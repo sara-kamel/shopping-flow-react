@@ -7,7 +7,7 @@ import { CardActionArea, CardActions } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { TitleStyles, ProductsCridStyles } from "./Styles";
+import { TitleStyles, ProductsGridStyles } from "./Styles";
 
 export default function Products({ products }) {
   return (
@@ -17,7 +17,7 @@ export default function Products({ products }) {
       </Box>
       <Box>{!products.length > 0 && (<h4>There are no matching products for your search </h4>) }</Box>
       <Box>{products.length > 0 && (<h4>{products.length === 1 ? "There is 1 product." : `There are ${products.length} products`}</h4>) }</Box>
-      <Grid spacing={2} container  style={ProductsCridStyles}>
+      <Grid spacing={2} container  style={ProductsGridStyles}>
         {products.map((product) => (
           <Card key={product.id} sx={{ maxWidth: 345, marginTop: "10px" }}>
             <CardActionArea>
