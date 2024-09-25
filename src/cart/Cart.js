@@ -33,7 +33,6 @@ export default function Cart ({ onChangeItemsCount }) {
       </Box>
 
       <Stack
-        data-testid='cart-items'
         direction={{ xs: 'column', sm: 'row' }}
         flexWrap='wrap'
         justifyContent={{ xs: 'center', sm: 'flex-start' }}
@@ -74,6 +73,7 @@ export default function Cart ({ onChangeItemsCount }) {
                 }}
               />
               <Button
+                data-testid='delete-button'
                 variant='contained'
                 color='warning'
                 onClick={() => {
