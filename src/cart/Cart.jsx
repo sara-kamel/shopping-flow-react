@@ -40,7 +40,7 @@ export default function Cart ({ onChangeItemsCount }) {
         {cartList.map(product => (
           <ProductCardStyles key={product.id} spacing={5}>
             <Stack flexDirection='row' justifyContent='space-between'>
-              <img src={product.image} style={CardImgStyles} />
+              <img src={product.image} style={CardImgStyles} alt='product'/>
 
               <Typography
                 variant='h6'

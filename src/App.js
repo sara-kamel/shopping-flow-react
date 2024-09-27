@@ -9,7 +9,7 @@ import { countQuantity, getItemsFromLocalStorge } from "./helper";
 import Checkout from "./Checkout";
 import Box from "@mui/material/Box";
 import useSearch from "./useSearch";
-import NavBar from "./NavBar";
+import NavBar from './navBar/NavBar'
 import {FooterStyles} from './Styles'
 
 
