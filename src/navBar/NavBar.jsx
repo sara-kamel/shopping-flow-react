@@ -3,19 +3,16 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
-import { Input } from '@mui/material'
 import { Link } from 'react-router-dom'
 import useSearch from '../useSearch'
 import { useNavigate } from 'react-router-dom'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined'
 import MenuIcon from '@mui/icons-material/Menu'
-import { StyledBadge } from './NavBarStyles'
+import { StyledBadge, StyledTypography, StyledHeaderIconSmall, StyledHeaderIconLarge, StyledInputField, StyledSearchButton } from './NavBarStyles'
 
 const pages = [
   { pageName: 'Home', pageLink: '/' },
@@ -38,7 +35,7 @@ function NavBar({ cartCount }) {
 
   return (
     <AppBar position='static'>
-      <Container  maxWidth='xl'>
+      <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <Box
             sx={{
@@ -54,13 +51,7 @@ function NavBar({ cartCount }) {
               color='inherit'
             >
               <MenuIcon sx={{ fontSize: { xs: '20px', sm: '40px' } }} />
-              <MonetizationOnOutlinedIcon
-                sx={{
-                  display: { xs: 'inherit', sm: 'none' },
-                  width: '2rem',
-                  height: '2rem'
-                }}
-              />
+              <StyledHeaderIconSmall />
             </IconButton>
             <Menu
               id='menu-appbar'
@@ -90,30 +81,14 @@ function NavBar({ cartCount }) {
             </Menu>
           </Box>
           <IconButton color='inherit'>
-            <MonetizationOnOutlinedIcon
-              sx={{
-                display: { xs: 'none', sm: 'flex' },
-                width: '2.5rem',
-                height: '2.5rem'
-              }}
-            />
+            <StyledHeaderIconLarge />
           </IconButton>
-          <Typography
+          <StyledTypography
             variant='h5'
             noWrap
-            sx={{
-              flexGrow: { sm: 1, md: 0 },
-              display: { xs: 'none', sm: 'flex' },
-              width: { sm: '35%', md: 'auto' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              padding: '10px',
-              letterSpacing: { xs: 'none', sm: '.2rem', md: '.5rem' },
-              color: 'inherit'
-            }}
           >
-          Shopping
-          </Typography>
+            Shopping
+          </StyledTypography>
           <Box
             sx={{
               flexGrow: 1,
@@ -127,16 +102,13 @@ function NavBar({ cartCount }) {
               </Link>
             ))}
           </Box>
-          <Input
+          <StyledInputField
             data-testid='search-input'
-            style={{ color: 'white' }}
             type='text'
-            label='Search input'
             value={keyWordSearch}
             onChange={e => setKeyWordSearch(e.target.value)}
           />
-          <Button
-            color='inherit'
+          <StyledSearchButton
             onClick={() => {
               if (keyWordSearch) {
                 onSearch(keyWordSearch)
@@ -146,7 +118,7 @@ function NavBar({ cartCount }) {
             }}
           >
             Search
-          </Button>
+          </StyledSearchButton>
           <Link to={'/cart'}>
             <IconButton aria-label='cart'>
               <StyledBadge
