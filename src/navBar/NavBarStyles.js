@@ -53,10 +53,9 @@ export const StyledHeaderIconLarge = styled(MonetizationOnOutlinedIcon)(
 
 export const StyledInputField = styled(Input)(({ theme }) => ({
   color: 'white',
-  [theme.breakpoints.down('sm')]: {
-    '& .MuiInputLabel-root': {
-      fontSize: theme.spacing(3)
-    }
+  fontSize: theme.spacing(1.5),
+  [theme.breakpoints.up('sm')]: {
+    fontSize: theme.spacing(2)
   }
 }))
 
