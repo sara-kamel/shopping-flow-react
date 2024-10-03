@@ -5,7 +5,7 @@ import Home from "./Home";
 import Cart from "./cart/Cart";
 import { Route, Routes } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
-import { countQuantity, getItemsFromLocalStorge } from "./helper";
+import { countQuantity, getItemsFromLocalStorge } from './helper/helper';
 import Checkout from "./Checkout";
 import Box from "@mui/material/Box";
 import useSearch from "./useSearch";

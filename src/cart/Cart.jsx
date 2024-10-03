@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { countTotal, updateCartQuantity, countQuantity } from '../helper'
+import { countTotal, updateCartQuantity, countQuantity } from '../helper/helper'
 import useLocalStorage from '../useLocalStorage'
 import Form from 'react-bootstrap/Form'
 import { Box, Stack, Typography, Button } from '@mui/material'
@@ -12,11 +12,11 @@ import {
   CartButtonsStyles
 } from './CartStyles'
 
-export default function Cart ({ onChangeItemsCount }) {
+export default function Cart({ onChangeItemsCount }) {
   const navigate = useNavigate()
   const { items: cartList, setItems: setCartList } = useLocalStorage('cartList')
 
-  function onHandleChange (list, id, newQuantity) {
+  function onHandleChange(list, id, newQuantity) {
     const newList = updateCartQuantity(list, id, newQuantity)
     setCartList(newList)
     onChangeItemsCount(countQuantity(newList))
@@ -40,7 +40,7 @@ export default function Cart ({ onChangeItemsCount }) {
         {cartList.map(product => (
           <ProductCardStyles key={product.id} spacing={5}>
             <Stack flexDirection='row' justifyContent='space-between'>
-              <img src={product.image} style={CardImgStyles} alt='product'/>
+              <img src={product.image} style={CardImgStyles} alt='product' />
 
               <Typography
                 variant='h6'
