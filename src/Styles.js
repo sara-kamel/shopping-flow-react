@@ -32,8 +32,6 @@ export const FormStyles = {
   padding: '10px'
 }
 
-//cart styles section
-
 export const ProductsGridStyles = {
   background: '#c6e1f1',
   margin: 'auto',
