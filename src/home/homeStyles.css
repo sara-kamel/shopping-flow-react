@@ -1,0 +1,36 @@
+.backgroundStyles {
+  height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.backgroundStyles h6 {
+  background-color: rgb(52, 50, 50);
+  margin: auto;
+  width: 100%;
+  padding: 1px;
+}
+.backgroundStyles p {
+  width: 100%;
+  padding: 2px;
+  background-color: rgb(202, 159, 4);
+  margin: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .backgroundStyles {
+    height: 500px;
+    background-size: contain;
+  }
+  .backgroundStyles h6 {
+    font-size: larger;
+    width: 50%;
+    padding: 5px;
+  }
+  .backgroundStyles p {
+    font-size: larger;
+    width: 60%;
+    padding: 12px;
+  }
+}
