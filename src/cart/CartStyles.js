@@ -1,8 +1,7 @@
-import { Box, Stack, styled } from "@mui/material";
-
+import { Box, Stack, styled } from '@mui/material'
 
 export const ProductCardStyles = styled(Stack)(({ theme }) => ({
-  border: "1px solid #9f9f9f52",
+  border: '1px solid #9f9f9f52',
   borderRadius: '5px',
   padding: '20px',
   marginTop: '10px',
@@ -11,16 +10,25 @@ export const ProductCardStyles = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     width: ' 48%',
     padding: '10px',
-    margin: '5px',
+    margin: '5px'
   },
   [theme.breakpoints.up('md')]: {
     width: '400px',
     margin: '15px',
-    padding: '20px',
-  },
-
+    padding: '20px'
+  }
 }))
 
+export const ContainerStyles = styled(Stack)(({ theme }) => ({
+  flexWrap: 'wrap',
+  padding: '10px',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  }
+}))
 
 export const CardImgStyles = { height: '100px', width: '100px' }
 export const CardFooterStyles = {

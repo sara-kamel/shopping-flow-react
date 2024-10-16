@@ -4,7 +4,7 @@ import "./homeStyles.css";
 export default function Home() {
   return (
     <div>
-      <Carousel data-bs-theme='dark' className="mt-3 btn-flat"
+      <Carousel data-bs-theme='dark' className="mt-3 p-2"
       >
         <Carousel.Item
           className="backgroundStyles"

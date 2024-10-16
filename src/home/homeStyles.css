@@ -18,7 +18,7 @@
   margin: auto;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 800px) {
   .backgroundStyles {
     height: 500px;
     background-size: contain;

@@ -4,7 +4,7 @@ import Products from "./Products";
 import Home from "./home/Home";
 import Cart from "./cart/Cart";
 import { Route, Routes } from "react-router-dom";
-import ProductDetails from "./ProductDetails";
+import ProductDetails from './product-details/ProductDetails'
 import { countQuantity, getItemsFromLocalStorge } from './helper/helper';
 import Checkout from "./Checkout";
 import Box from "@mui/material/Box";

@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import Button from 'react-bootstrap/Button'
+import { Button } from '@mui/material'
 import { useParams, useNavigate } from 'react-router-dom'
-import ProductsList from './ProductsList'
+import ProductsList from '../ProductsList'
 import {
   findItem,
   addNewItemToCart,
   getItemsFromLocalStorge,
   countQuantity,
   setItemInLocalStorge
-} from './helper/helper'
+} from '../helper/helper'
 import Box from '@mui/material/Box'
-import { TitleStyles } from './Styles'
+import { TitleStyles } from '../Styles'
+import '../home/homeStyles.css'
+import './productStyles.css'
 
 export default function ProductDetails ({ onAddToCart }) {
   const navigate = useNavigate()
@@ -43,34 +45,28 @@ export default function ProductDetails ({ onAddToCart }) {
       <Box sx={TitleStyles}>
         <h1> {product.title} </h1>
       </Box>
-      <section className='product-details'>
-        <Carousel key={product.id}>
-          {product.images.map((image, index) => (
-            <Carousel.Item key={index}>
-              <div
-                style={{
-                  height: '500px',
-                  width: '100%',
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center'
-                }}
-              ></div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-        <article>
-          <div>
-            <h3>
-              {product.title} {product.price}$
-            </h3>
-            <p>{product.description}</p>
-          </div>
-        </article>
-        <article>
+
+      <Carousel key={product.id} data-bs-theme='dark' className='p-2'>
+        {product.images.map((image, index) => (
+          <Carousel.Item
+            className='backgroundStyles'
+            key={index}
+            style={{
+              backgroundImage: `url(${image})`
+            }}
+          ></Carousel.Item>
+        ))}
+      </Carousel>
+      <Box className='product-information'>
+        <div className='product-descriptions'>
+          <h4>
+            {product.title} {product.price}$
+          </h4>
+          <h6>{product.description}</h6>
+        </div>
+        <div>
           <input
-            style={{ width: '80px' }}
+            className=' quantity-field'
             type='number'
             value={quantity}
             onChange={e => {
@@ -78,6 +74,9 @@ export default function ProductDetails ({ onAddToCart }) {
             }}
           />
           <Button
+            className='m-3'
+            variant='contained'
+            color='info'
             onClick={() => {
               onAddProductToCart(product, quantity)
               alert('Item added to your cart')
@@ -86,8 +85,8 @@ export default function ProductDetails ({ onAddToCart }) {
           >
             Add To Cart
           </Button>
-        </article>
-      </section>
+        </div>
+      </Box>
     </>
   )
 }

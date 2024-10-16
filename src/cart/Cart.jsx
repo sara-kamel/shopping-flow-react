@@ -9,7 +9,8 @@ import {
   CardFooterStyles,
   CardImgStyles,
   BillFieldStyles,
-  CartButtonsStyles
+  CartButtonsStyles,
+  ContainerStyles
 } from './CartStyles'
 
 export default function Cart({ onChangeItemsCount }) {
@@ -32,11 +33,7 @@ export default function Cart({ onChangeItemsCount }) {
         <h1> Your Cart </h1>
       </Box>
 
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        flexWrap='wrap'
-        justifyContent={{ xs: 'center', sm: 'flex-start' }}
-      >
+      <ContainerStyles>
         {cartList.map(product => (
           <ProductCardStyles key={product.id} spacing={5}>
             <Stack flexDirection='row' justifyContent='space-between'>
@@ -86,7 +83,7 @@ export default function Cart({ onChangeItemsCount }) {
             </Form>
           </ProductCardStyles>
         ))}
-      </Stack>
+      </ContainerStyles>
 
       <hr />
       <Stack
