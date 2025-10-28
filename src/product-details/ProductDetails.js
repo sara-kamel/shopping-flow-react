@@ -1,42 +1,40 @@
-import { useState } from 'react'
-import Carousel from 'react-bootstrap/Carousel'
-import { Button } from '@mui/material'
-import { useParams, useNavigate } from 'react-router-dom'
-import ProductsList from '../ProductsList'
+import { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import { Button } from '@mui/material';
+import { useParams, useNavigate } from 'react-router-dom';
+import ProductsList from '../products/ProductsList';
 import {
   findItem,
   addNewItemToCart,
   getItemsFromLocalStorge,
   countQuantity,
-  setItemInLocalStorge
-} from '../helper/helper'
-import Box from '@mui/material/Box'
-import { TitleStyles } from '../Styles'
-import '../home/homeStyles.css'
-import './productStyles.css'
+  setItemInLocalStorge,
+} from '../helper/helper';
+import Box from '@mui/material/Box';
+import { TitleStyles } from '../Styles';
+import '../home/homeStyles.css';
+import './productStyles.css';
 
-export default function ProductDetails ({ onAddToCart }) {
-  const navigate = useNavigate()
-  const { id } = useParams()
+export default function ProductDetails({ onAddToCart }) {
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const product = findItem(ProductsList, id)
-  const [quantity, setQuantity] = useState(1)
-  const [cartList, setCartList] = useState(() =>
-    getItemsFromLocalStorge('cartList')
-  )
+  const product = findItem(ProductsList, id);
+  const [quantity, setQuantity] = useState(1);
+  const [cartList, setCartList] = useState(() => getItemsFromLocalStorge('cartList'));
 
-  function onAddProductToCart (product, newCount) {
-    const newList = [...cartList]
-    let existItem = findItem(newList, product.id)
+  function onAddProductToCart(product, newCount) {
+    const newList = [...cartList];
+    let existItem = findItem(newList, product.id);
     if (existItem) {
-      existItem.quantity += newCount
-      setCartList(newList)
-      console.log(cartList)
-      setItemInLocalStorge('cartList', cartList)
-      onAddToCart(countQuantity(newList))
+      existItem.quantity += newCount;
+      setCartList(newList);
+      console.log(cartList);
+      setItemInLocalStorge('cartList', cartList);
+      onAddToCart(countQuantity(newList));
     } else {
-      addNewItemToCart(newList, product, newCount)
-      onAddToCart(countQuantity(newList) + newCount)
+      addNewItemToCart(newList, product, newCount);
+      onAddToCart(countQuantity(newList) + newCount);
     }
   }
 
@@ -46,19 +44,18 @@ export default function ProductDetails ({ onAddToCart }) {
         <h1> {product.title} </h1>
       </Box>
 
-      <Carousel key={product.id} data-bs-theme='dark' className='p-2'>
+      <Carousel key={product.id} data-bs-theme="dark" className="p-2">
         {product.images.map((image, index) => (
           <Carousel.Item
-            className='backgroundStyles'
+            className="backgroundStyles"
             key={index}
             style={{
-              backgroundImage: `url(${image})`
-            }}
-          ></Carousel.Item>
+              backgroundImage: `url(${image})`,
+            }}></Carousel.Item>
         ))}
       </Carousel>
-      <Box className='product-information'>
-        <div className='product-descriptions'>
+      <Box className="product-information">
+        <div className="product-descriptions">
           <h4>
             {product.title} {product.price}$
           </h4>
@@ -66,27 +63,26 @@ export default function ProductDetails ({ onAddToCart }) {
         </div>
         <div>
           <input
-            className=' quantity-field'
-            type='number'
+            className=" quantity-field"
+            type="number"
             value={quantity}
-            onChange={e => {
-              if (e.target.value >= 1) setQuantity(parseInt(e.target.value))
+            onChange={(e) => {
+              if (e.target.value >= 1) setQuantity(parseInt(e.target.value));
             }}
           />
           <Button
-            className='m-3'
-            variant='contained'
-            color='info'
+            className="m-3"
+            variant="contained"
+            color="info"
             onClick={() => {
-              onAddProductToCart(product, quantity)
-              alert('Item added to your cart')
-              navigate('/cart')
-            }}
-          >
+              onAddProductToCart(product, quantity);
+              alert('Item added to your cart');
+              navigate('/cart');
+            }}>
             Add To Cart
           </Button>
         </div>
       </Box>
     </>
-  )
+  );
 }

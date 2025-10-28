@@ -5,10 +5,10 @@ export const TitleStyles = {
   height: 100,
   marginTop: 4,
   marginBottom: 4,
-  paddingTop: '20px'
-}
+  paddingTop: '20px',
+};
 
-export const FormFieldSyles = { width: '70%' }
+export const FormFieldSyles = { width: '70%' };
 
 export const ModalStyles = {
   position: 'absolute',
@@ -19,8 +19,8 @@ export const ModalStyles = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4
-}
+  p: 4,
+};
 
 export const FormStyles = {
   margin: 0,
@@ -29,16 +29,14 @@ export const FormStyles = {
   flexWrap: 'wrap',
   justifyContent: 'center',
   gap: '10px',
-  padding: '10px'
-}
+  padding: '10px',
+};
 
 export const ProductsGridStyles = {
-  background: '#c6e1f1',
-  margin: 'auto',
   justifyContent: 'center',
-  padding: '10px',
-  gap: '15px'
-}
+  padding: '5px',
+  gap: '10px',
+};
 
 export const FooterStyles = {
   textAlign: 'center',
@@ -48,5 +46,5 @@ export const FooterStyles = {
   width: '100%',
   height: 50,
   gap: 1,
-  paddingTop: '15px'
-}
+  paddingTop: '15px',
+};
