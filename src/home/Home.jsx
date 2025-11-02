@@ -1,10 +1,12 @@
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import "./homeStyles.css";
+import { Avatar, Typography, Stack } from "@mui/material";
+import { InfoCard } from "./InfoCard";
 
 export default function Home() {
   return (
     <div>
-      <Carousel data-bs-theme='dark' className="mt-3 p-2"
+      {/* <Carousel data-bs-theme='dark' className="mt-3 p-2"
       >
         <Carousel.Item
           className="backgroundStyles"
@@ -39,7 +41,22 @@ export default function Home() {
             <p>You will not waste time anymore</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
+
+      <Stack direction="row" spacing={2}>
+        <div>
+          <Avatar src="https://as1.ftcdn.net/v2/jpg/02/71/77/56/1000_F_271775672_yo8ZgraN2IHGbfqP2k0PsLjwvmatUNUJ.jpg"
+            alt="shopping"
+            sx={{ width: 500, height: 500 }}
+            variant="square" />
+        </div>
+        <div>
+          <Typography>
+            <h6>Don't miss this Sale!</h6>
+            <p>Up to 80% off</p>
+          </Typography></div>
+      </Stack>
+      <InfoCard />
     </div>
   )
 }
