@@ -8,18 +8,17 @@ export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo 
             <Stack
                 direction={{ xs: 'column', sm: 'row' }}
                 spacing={{ xs: 1, sm: 2, md: 4 }}
-                width={"100%"}
+                width="100%"
                 justifyContent='space-around' padding={4}
                 alignItems="center"
             >
-                <div>
-                    <Avatar
-                        src={img}
-                        alt={alt}
-                        sx={{ width: 300, height: 300 }}
-                        variant="square"
-                    />
-                </div>
+                <Avatar
+                    src={img}
+                    alt={alt}
+                    sx={{ width: 300, height: 300 }}
+                    variant="square"
+                />
+
                 <Stack direction="column" alignItems="center">
                     <Typography>
                         {text}
@@ -38,20 +37,29 @@ export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo 
                 justifyContent='space-around' padding={4}
                 alignItems="center"
             >
-                <Stack direction="column" alignItems="center">
+
+                <Avatar
+                    src={imgTwo}
+                    alt={altTwo}
+                    sx={{ width: { sx: 300, sm: 0 }, height: 300, display: { xs: "block", sm: "none" } }}
+                    variant="square"
+                />
+
+                <Stack direction="column" alignItems="center"
+                >
                     <Typography>
-                        {text}
+                        {textTwo}
                     </Typography>
                     <Link to={urlTwo}>Show More</Link>
                 </Stack>
-                <div>
-                    <Avatar
-                        src={imgTwo}
-                        alt={altTwo}
-                        sx={{ width: 300, height: 300 }}
-                        variant="square"
-                    />
-                </div>
+
+                <Avatar
+                    src={imgTwo}
+                    alt={altTwo}
+                    sx={{ width: 300, height: 300, display: { xs: "none", sm: "block" } }}
+                    variant="square"
+                />
+
             </Stack>
         </Stack>
 
