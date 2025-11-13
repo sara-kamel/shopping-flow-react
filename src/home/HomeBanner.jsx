@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material"
 
 export const HomeBanner = () => {
+ 
     return (
         <Stack
             sx={{ width: "100%", height: "300px" }}

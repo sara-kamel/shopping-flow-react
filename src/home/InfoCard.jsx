@@ -1,8 +1,9 @@
 
-import { Avatar, Typography, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Avatar, Typography, Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo }) => {
+    const navigate = useNavigate()
     return (
         <Stack direction="column" alignItems="center">
             <Stack
@@ -23,7 +24,10 @@ export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo 
                     <Typography>
                         {text}
                     </Typography>
-                    <Link to={url}>Show More</Link>
+                    <br />
+                    <Button color="secondary" variant="outlined" onClick={() => {
+                        navigate(urlTwo)
+                    }}>Show More</Button>
                 </Stack>
 
             </Stack>
@@ -41,7 +45,7 @@ export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo 
                 <Avatar
                     src={imgTwo}
                     alt={altTwo}
-                    sx={{ width: { sx: 300, sm: 0 }, height: 300, display: { xs: "block", sm: "none" } }}
+                    sx={{ width: 300, height: 300, display: { xs: "block", sm: "none" } }}
                     variant="square"
                 />
 
@@ -50,7 +54,10 @@ export const InfoCard = ({ img, imgTwo, alt, altTwo, text, textTwo, url, urlTwo 
                     <Typography>
                         {textTwo}
                     </Typography>
-                    <Link to={urlTwo}>Show More</Link>
+                    <br />
+                    <Button color="secondary" variant="outlined" onClick={() => {
+                        navigate(urlTwo)
+                    }}>Show More</Button>
                 </Stack>
 
                 <Avatar

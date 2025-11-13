@@ -16,7 +16,8 @@ export default function Home() {
         altTwo="order picture"
         text="Big Savings Await — Grab Your Deal Before It’s Gone!"
         textTwo="New Arrivals Just Dropped — Be the First to Shop!"
-        url="/"
+        url="/products"
+        urlTwo="/products" 
       />
 
     </div>
