@@ -18,6 +18,39 @@
   margin: auto;
 }
 
+.category-section-title {
+  text-align: center;
+}
+
+.category-card {
+  width: 400px;
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.category-card h3 {
+  color: rgb(233, 231, 231);
+  background: rgb(251, 168, 1);
+  padding: 10px;
+  width: 150px;
+}
+.category-card-kids {
+  background-image: url('./images/cute-little-girl-shopping.jpg');
+}
+
+.category-card-women {
+  background-image: url('./images/young-womens-shopping-together.jpg');
+}
+
+.category-card-men {
+  background-image: url('./images/portrait-man-going-out-shopping-various-consumer-goods.jpg');
+}
+
+.category-card-clearance {
+  background: rgb(236, 5, 5);
+}
+
 @media screen and (min-width: 800px) {
   .backgroundStyles {
     height: 500px;

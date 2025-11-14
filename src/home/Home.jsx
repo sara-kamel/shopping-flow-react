@@ -2,8 +2,9 @@
 import "./homeStyles.css";
 import { InfoCard } from "./InfoCard";
 import { HomeBanner } from "./HomeBanner";
-import shoppingItems from "./shopping-items.jpg";
-import orderComplete from "./order-complete.jpg"
+import shoppingItems from "./images/shopping-items.jpg";
+import orderComplete from "./images/order-complete.jpg"
+import { Category } from "./Category";
 
 export default function Home() {
   return (
@@ -17,9 +18,11 @@ export default function Home() {
         text="Big Savings Await — Grab Your Deal Before It’s Gone!"
         textTwo="New Arrivals Just Dropped — Be the First to Shop!"
         url="/products"
-        urlTwo="/products" 
+        urlTwo="/products"
       />
-
+      <br />
+      <br />
+      <Category />
     </div>
   )
 }
