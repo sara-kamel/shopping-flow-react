@@ -7,7 +7,7 @@ export const Category = () => {
         <div>
             <h1 className="category-section-title">Shope by Category</h1>
             <br />
-            <Stack direction={{ xs: 'column', sm: 'row' }} gap={2} >
+            <Stack direction={{ xs: 'column', sm: 'row' }} gap={2} alignItems="center" >
                 <Card
                     categoryText="Kids"
                     categoryClassName="category-card-kids"

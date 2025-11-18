@@ -5,6 +5,7 @@ import { HomeBanner } from "./HomeBanner";
 import shoppingItems from "./images/shopping-items.jpg";
 import orderComplete from "./images/order-complete.jpg"
 import { Category } from "./Category";
+import { HomePharagraph } from "./HomeParagraph";
 
 export default function Home() {
   return (
@@ -23,6 +24,9 @@ export default function Home() {
       <br />
       <br />
       <Category />
+      <br />
+      <hr />
+      <HomePharagraph />
     </div>
   )
 }
