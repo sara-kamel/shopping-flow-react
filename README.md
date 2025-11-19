@@ -14,9 +14,6 @@ Shopping-flow-react is an interactive web application designed to streamline the
 React, MUI (Material-UI), Bootstrap, Formik and Yup.
 
 # How it looks on Desktop :
-
-![Home Page](https://raw.githubusercontent.com/sara-kamel/shopping-flow-react/d967f7884910719264a82ac24c45cd25226ee14d/src/assets/deskTop/Screenshot%202024-04-23%20091852.png "Home Page")
-
 ![Products List](https://raw.githubusercontent.com/sara-kamel/shopping-flow-react/d967f7884910719264a82ac24c45cd25226ee14d/src/assets/deskTop/Screenshot%202024-04-22%20224339.png "Products List")
 
 ![Product details](https://raw.githubusercontent.com/sara-kamel/shopping-flow-react/d967f7884910719264a82ac24c45cd25226ee14d/src/assets/deskTop/Screenshot%202024-04-22%20224506.png "Product details")
