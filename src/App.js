@@ -43,7 +43,7 @@ export default function App() {
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <footer>
-        <Box sx={FooterStyles}>@2024</Box>
+        <Box sx={FooterStyles}>@2025</Box>
       </footer>
     </>
   );
