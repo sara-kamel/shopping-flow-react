@@ -22,7 +22,7 @@ export const HomeBanner = () => {
                     color="#fff8f8"
                     border="5px solid #413e3e "
                     padding="12px"
-                    borderRadius="20%"
+                    borderRadius="5px"
 
                 >
                     Up to 50% OFF Limited Time Only!
